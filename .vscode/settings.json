@@ -3,6 +3,14 @@
     "java.project.outputPath": "bin",
     "java.project.referencedLibraries": [
         "lib/**/*.jar",
-        "/Users/pablosetrakianbearzotti/Development/sdk/javafx-sdk-19/lib/**/*.jar"
+        "/Users/pablosetrakianbearzotti/Development/sdk/javafx-sdk-19/lib/**/*.jar",
+        "c:\\Users\\pablo\\Desktop\\javafx-sdk-19\\lib\\javafx.base.jar",
+        "c:\\Users\\pablo\\Desktop\\javafx-sdk-19\\lib\\javafx.controls.jar",
+        "c:\\Users\\pablo\\Desktop\\javafx-sdk-19\\lib\\javafx.fxml.jar",
+        "c:\\Users\\pablo\\Desktop\\javafx-sdk-19\\lib\\javafx.graphics.jar",
+        "c:\\Users\\pablo\\Desktop\\javafx-sdk-19\\lib\\javafx.media.jar",
+        "c:\\Users\\pablo\\Desktop\\javafx-sdk-19\\lib\\javafx.swing.jar",
+        "c:\\Users\\pablo\\Desktop\\javafx-sdk-19\\lib\\javafx.web.jar",
+        "c:\\Users\\pablo\\Desktop\\javafx-sdk-19\\lib\\javafx-swt.jar"
     ]
 }
