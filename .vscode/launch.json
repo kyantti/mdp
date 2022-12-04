@@ -9,6 +9,14 @@
             "name": "Launch MainCalculadora",
             "request": "launch",
             "mainClass": "main.java.es.unex.cum.mdp.sesion10.MainCalculadora",
+            "projectName": "mdp_6ebd01d8",
+            "vmArgs": "--module-path /Users/pablosetrakianbearzotti/Development/sdk/javafx-sdk-19/lib --add-modules javafx.controls,javafx.fxml"
+        },
+        {
+            "type": "java",
+            "name": "Launch MainCalculadora",
+            "request": "launch",
+            "mainClass": "main.java.es.unex.cum.mdp.sesion10.MainCalculadora",
             "projectName": "mdp_5288cf4c",
             "vmArgs": "--module-path \"C:/Users/pablo/Desktop/javafx-sdk-19/lib\" --add-modules javafx.controls,javafx.fxml"
         },
@@ -24,14 +32,6 @@
             "request": "launch",
             "mainClass": "App",
             "projectName": "mdp_1a148755"
-        },
-        {
-            "type": "java",
-            "name": "Launch MainCalculadora",
-            "request": "launch",
-            "mainClass": "main.java.es.unex.cum.mdp.sesion10.MainCalculadora",
-            "projectName": "mdp_1a148755",
-            "vmArgs": "--module-path /Users/pablosetrakianbearzotti/Development/sdk/javafx-sdk-19/lib --add-modules javafx.controls,javafx.fxml"
         }
     ]
 }
