@@ -11,173 +11,146 @@ import javafx.scene.control.TextField;
 
 public class CalculadoraController implements Initializable {
 
-	 @FXML
-	    private Button boton0;
+	@FXML
+	private TextField textfield;
 
-	    @FXML
-	    private Button boton1;
+	private Float operando1;
 
-	    @FXML
-	    private Button boton2;
+    private Float operando2;
 
-	    @FXML
-	    private Button boton3;
+	private Float resultado;
 
-	    @FXML
-	    private Button boton4;
+    private String operacion;
 
-	    @FXML
-	    private Button boton5;
+	@FXML
+	void ActionCambiarSigno(ActionEvent event) {
+		operando1 = -operando1;
+		operando2 = -operando2;
+	}
 
-	    @FXML
-	    private Button boton6;
+	@FXML
+	void ActionClear(ActionEvent event) {
 
-	    @FXML
-	    private Button boton7;
+	}
 
-	    @FXML
-	    private Button boton8;
+	@FXML
+	void ActionClearEntry(ActionEvent event) {
+		textfield.clear();
+	}
 
-	    @FXML
-	    private Button boton9;
+	@FXML
+	void ActionMsg(ActionEvent event) {
+		textfield.appendText("Inserte una operación");
+	}
 
-	    @FXML
-	    private Button botonClear;
+	@FXML
+	void actionDividir(ActionEvent event) {
+		seleccionarOperacion("/");
+	}
 
-	    @FXML
-	    private Button botonClearEntry;
+	@FXML
+	void actionMas(ActionEvent event) {
+		seleccionarOperacion("+");
+	}
 
-	    @FXML
-	    private Button botonDivision;
+	@FXML
+	void actionMenos(ActionEvent event) {
+		seleccionarOperacion("-");
+	}
 
-	    @FXML
-	    private Button botonIgual;
+	@FXML
+	void actionMultiplicar(ActionEvent event) {
+		seleccionarOperacion("*");
+	}
 
-	    @FXML
-	    private Button botonMas;
+	@FXML
+	void actionPunto(ActionEvent event) {
+		textfield.appendText(".");
+	}
 
-	    @FXML
-	    private Button botonMasMenos;
+	@FXML
+	void actionIgual(ActionEvent event) {
+		operando1 = Float.parseFloat(textfield.getText().split("\\" + operacion)[0]);
+		operando2 = Float.parseFloat(textfield.getText().split("\\" + operacion)[1]);
 
-	    @FXML
-	    private Button botonMenos;
+		textfield.clear();
 
-	    @FXML
-	    private Button botonMsg;
+		switch (operacion) {
+			case "+":
 
-	    @FXML
-	    private Button botonMultiplicacion;
+				resultado = operando1 + operando2;
+				textfield.setText(resultado.toString());
 
-	    @FXML
-	    private Button botonPunto;
+				break;
+			case "-":
+				resultado = operando1 - operando2;
+				textfield.setText(resultado.toString());
+				break;
+			case "*":
+				resultado = operando1 * operando2;
+				textfield.setText(resultado.toString());
+				break;
+			case "/":
+				resultado = operando1 / operando2;
+				textfield.setText(resultado.toString());
+				break;
 
-	    @FXML
-	    private TextField text1;
-
-	    @FXML
-	    void ActionCambiarSigno(ActionEvent event) {
-
-	    }
-
-	    @FXML
-	    void ActionClear(ActionEvent event) {
-
-	    }
-
-	    @FXML
-	    void ActionClearEntry(ActionEvent event) {
-
-	    }
-
-	    @FXML
-	    void ActionMsg(ActionEvent event) {
-
-	    }
-
-	    @FXML
-	    void action0(ActionEvent event) {
-
-	    }
-
-	    @FXML
-	    void action1(ActionEvent event) {
-
-	    }
-
-	    @FXML
-	    void action2(ActionEvent event) {
-
-	    }
-
-	    @FXML
-	    void action3(ActionEvent event) {
-
-	    }
-
-	    @FXML
-	    void action4(ActionEvent event) {
-
-	    }
-
-	    @FXML
-	    void action5(ActionEvent event) {
-
-	    }
-
-	    @FXML
-	    void action6(ActionEvent event) {
-
-	    }
-
-	    @FXML
-	    void action7(ActionEvent event) {
-
-	    }
-
-	    @FXML
-	    void action8(ActionEvent event) {
-
-	    }
-
-	    @FXML
-	    void action9(ActionEvent event) {
-
-	    }
-
-	    @FXML
-	    void actionDividir(ActionEvent event) {
-
-	    }
-
-	    @FXML
-	    void actionIgual(ActionEvent event) {
-
-	    }
-
-	    @FXML
-	    void actionMas(ActionEvent event) {
-
-	    }
-
-	    @FXML
-	    void actionMenos(ActionEvent event) {
-
-	    }
-
-	    @FXML
-	    void actionMultiplicar(ActionEvent event) {
-
-	    }
-
-	    @FXML
-	    void actionPunto(ActionEvent event) {
-
-	    }
-	    
-	    @Override
-		public void initialize(URL arg0, ResourceBundle arg1) {
-			// TODO Auto-generated method stub
-
+			default:
+				break;
 		}
+
+	}
+
+	public void seleccionarOperacion(String operacion){
+		this.operacion = operacion;
+		textfield.appendText(operacion);
+	}
+
+	@FXML
+	void botonNumerico(ActionEvent event) {
+		// En base al valor del text
+		String text = ((Button) event.getSource()).getText();
+
+		switch (text) {
+			case "0":
+			textfield.appendText("0");
+				break;
+			case "1":
+			textfield.appendText("1");
+			    break;
+			case "2":
+			textfield.appendText("2");
+			    break;
+			case "3":
+			textfield.appendText("3");
+                break;
+			case "4":
+			textfield.appendText("4");
+				break;
+			case "5":
+			textfield.appendText("5");
+			    break;
+			case "6":
+			textfield.appendText("6");
+			    break;
+			case "7":
+			textfield.appendText("7");
+                break;
+			case "8":
+			textfield.appendText("8");
+				break;
+			case "9":
+			textfield.appendText("9");
+			    break;
+			default:
+				break;
+		}
+	}
+
+	@Override
+	public void initialize(URL arg0, ResourceBundle arg1) {
+		// TODO Auto-generated method stub
+
+	}
 
 }
