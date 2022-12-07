@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch Prueba",
+            "request": "launch",
+            "mainClass": "main.java.es.unex.cum.mdp.prueba.Prueba",
+            "projectName": "mdp_6ebd01d8"
+        },
+        {
+            "type": "java",
             "name": "Launch MainCalculadora",
             "request": "launch",
             "mainClass": "main.java.es.unex.cum.mdp.sesion10.MainCalculadora",

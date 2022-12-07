@@ -70,8 +70,9 @@ public class CalculadoraController implements Initializable {
 
 	@FXML
 	void actionIgual(ActionEvent event) {
-		operando1 = Float.parseFloat(textfield.getText().split("\\" + operacion)[0]);
-		operando2 = Float.parseFloat(textfield.getText().split("\\" + operacion)[1]);
+		System.out.println(textfield.getText());
+		operando1 = Float.parseFloat(textfield.getText().split("" + operacion)[0]);
+		operando2 = Float.parseFloat(textfield.getText().split("" + operacion)[1]);
 
 		textfield.clear();
 
