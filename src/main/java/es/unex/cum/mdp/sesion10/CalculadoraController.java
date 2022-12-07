@@ -11,106 +11,99 @@ import javafx.scene.control.TextField;
 
 public class CalculadoraController implements Initializable {
 
+	private Calculator calculator = new Calculator();
+	private String operation = "";
+	private String currentNumber = "";
+
+	@FXML
+    private Button botonMas;
+
 	@FXML
 	private TextField textfield;
 
-	private Float operando1;
-
-    private Float operando2;
-
-	private Float resultado;
-
-    private String operacion;
-
-	@FXML
-	void ActionCambiarSigno(ActionEvent event) {
-		operando1 = -operando1;
-		operando2 = -operando2;
-	}
-
-	@FXML
-	void ActionClear(ActionEvent event) {
-
-	}
-
-	@FXML
-	void ActionClearEntry(ActionEvent event) {
+    @FXML
+    void actionClear(ActionEvent event) {
+		currentNumber = "";
 		textfield.clear();
-	}
+		calculator.reset();
+    }
+
+    @FXML
+    void actionClearEntry(ActionEvent event) {
+		
+    }
 
 	@FXML
-	void ActionMsg(ActionEvent event) {
+	void actionChangeSign(ActionEvent event){
+		if (textfield.getText().startsWith("-")) {
+			
+		}
+	}
+
+    @FXML
+    void actionMsg(ActionEvent event) {
 		textfield.appendText("Inserte una operación");
-	}
+    }
 
 	@FXML
-	void actionDividir(ActionEvent event) {
-		seleccionarOperacion("/");
-	}
-
-	@FXML
-	void actionMas(ActionEvent event) {
-		seleccionarOperacion("+");
-	}
-
-	@FXML
-	void actionMenos(ActionEvent event) {
-		seleccionarOperacion("-");
-	}
-
-	@FXML
-	void actionMultiplicar(ActionEvent event) {
-		seleccionarOperacion("*");
-	}
-
-	@FXML
-	void actionPunto(ActionEvent event) {
-		textfield.appendText(".");
-	}
-
-	@FXML
-	void actionIgual(ActionEvent event) {
-		operando1 = Float.parseFloat(textfield.getText().split("\\" + operacion)[0]);
-		operando2 = Float.parseFloat(textfield.getText().split("\\" + operacion)[1]);
-
+	void actionCalculate(ActionEvent event){
+		calculator.setOperand2(Double.parseDouble(textfield.getText()));
+		System.out.println(operation);
+		System.out.println("B = " + calculator.getOperand2());
 		textfield.clear();
 
-		switch (operacion) {
+		switch (operation) {
 			case "+":
-
-				resultado = operando1 + operando2;
-				textfield.setText(resultado.toString());
-
+			textfield.appendText(calculator.sum().toString());
 				break;
 			case "-":
-				resultado = operando1 - operando2;
-				textfield.setText(resultado.toString());
-				break;
+			textfield.appendText(calculator.subtraction().toString());
+			    break;
 			case "*":
-				resultado = operando1 * operando2;
-				textfield.setText(resultado.toString());
-				break;
+			textfield.appendText(calculator.mutiplication().toString());
+			    break;
 			case "/":
-				resultado = operando1 / operando2;
-				textfield.setText(resultado.toString());
-				break;
-
+			textfield.appendText(calculator.division().toString());
+			    break;
 			default:
 				break;
 		}
-
-	}
-
-	public void seleccionarOperacion(String operacion){
-		this.operacion = operacion;
-		textfield.appendText(operacion);
+		
 	}
 
 	@FXML
-	void botonNumerico(ActionEvent event) {
-		// En base al valor del text
+	void actionOperation(ActionEvent event){
+		if (!currentNumber.equals("")) {
+			calculator.setOperand1(Double.parseDouble(textfield.getText()));
+		System.out.println("A = " + calculator.getOperand1());
+		}
 		String text = ((Button) event.getSource()).getText();
+		textfield.clear();
+		operation = text;
+		switch (text) {
+			case "+":
+			textfield.appendText("+");
+				break;
+			case "-":
+			textfield.appendText("-");
+			    break;
+			case "*":
+			textfield.appendText("*");
+			    break;
+			case "/":
+			textfield.appendText("/");
+                break;
+			default:
+				break;
+		}
+	}
 
+	@FXML
+	void actionNumber(ActionEvent event) {
+		if (textfield.getText().contains("+") || textfield.getText().contains("*") || textfield.getText().contains("/") || textfield.getText().contains("-")) {
+			textfield.clear();
+		}
+		String text = ((Button) event.getSource()).getText();
 		switch (text) {
 			case "0":
 			textfield.appendText("0");
@@ -142,9 +135,14 @@ public class CalculadoraController implements Initializable {
 			case "9":
 			textfield.appendText("9");
 			    break;
+			case ".":
+			textfield.appendText(".");
+			    break;
 			default:
 				break;
 		}
+		currentNumber = textfield.getText();
+		System.out.println(currentNumber);
 	}
 
 	@Override

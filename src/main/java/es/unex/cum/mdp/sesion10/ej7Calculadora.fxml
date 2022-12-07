@@ -32,26 +32,26 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Button fx:id="botonMsg" mnemonicParsing="false" onAction="#ActionMsg" styleClass="especial" text="Msg" />
-            <Button fx:id="botonClearEntry" mnemonicParsing="false" onAction="#ActionClearEntry" styleClass="especial" text="CE" GridPane.columnIndex="1" />
-            <Button fx:id="botonClear" mnemonicParsing="false" onAction="#ActionClear" styleClass="especial" text="CL" GridPane.columnIndex="2" />
-            <Button fx:id="botonMasMenos" mnemonicParsing="false" onAction="#ActionCambiarSigno" styleClass="operador" text="+/-" GridPane.columnIndex="3" />
-            <Button fx:id="boton7" mnemonicParsing="false" onAction="#botonNumerico" text="7" GridPane.rowIndex="1" />
-            <Button fx:id="boton8" mnemonicParsing="false" onAction="#botonNumerico" text="8" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <Button fx:id="boton9" mnemonicParsing="false" onAction="#botonNumerico" text="9" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-            <Button fx:id="botonDivision" mnemonicParsing="false" onAction="#actionDividir" styleClass="operador" text="/" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-            <Button fx:id="boton4" mnemonicParsing="false" onAction="#botonNumerico" text="4" GridPane.rowIndex="2" />
-            <Button fx:id="boton5" mnemonicParsing="false" onAction="#botonNumerico" text="5" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <Button fx:id="boton6" mnemonicParsing="false" onAction="#botonNumerico" text="6" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-            <Button fx:id="botonMultiplicacion" mnemonicParsing="false" onAction="#actionMultiplicar" styleClass="operador" text="*" GridPane.columnIndex="3" GridPane.rowIndex="2" />
-            <Button fx:id="boton1" mnemonicParsing="false" onAction="#botonNumerico" text="1" GridPane.rowIndex="3" />
-            <Button fx:id="boton2" mnemonicParsing="false" onAction="#botonNumerico" text="2" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <Button fx:id="boton3" mnemonicParsing="false" onAction="#botonNumerico" text="3" GridPane.columnIndex="2" GridPane.rowIndex="3" />
-            <Button fx:id="botonMenos" mnemonicParsing="false" onAction="#actionMenos" styleClass="operador" text="-" GridPane.columnIndex="3" GridPane.rowIndex="3" />
-            <Button fx:id="boton0" mnemonicParsing="false" onAction="#botonNumerico" text="0" GridPane.rowIndex="4" />
-            <Button fx:id="botonPunto" mnemonicParsing="false" onAction="#actionPunto" text="." GridPane.columnIndex="1" GridPane.rowIndex="4" />
-            <Button fx:id="botonIgual" mnemonicParsing="false" onAction="#actionIgual" styleClass="operador" text="=" GridPane.columnIndex="2" GridPane.rowIndex="4" />
-            <Button fx:id="botonMas" mnemonicParsing="false" onAction="#actionMas" styleClass="operador" text="+" GridPane.columnIndex="3" GridPane.rowIndex="4" />
+            <Button fx:id="botonMsg" mnemonicParsing="false" onAction="#actionMsg" styleClass="especial" text="Msg" />
+            <Button fx:id="botonClearEntry" mnemonicParsing="false" onAction="#actionClearEntry" styleClass="especial" text="CE" GridPane.columnIndex="1" />
+            <Button fx:id="botonClear" mnemonicParsing="false" onAction="#actionClear" styleClass="especial" text="CL" GridPane.columnIndex="2" />
+            <Button fx:id="botonMasMenos" mnemonicParsing="false" onAction="#actionChangeSign" styleClass="operador" text="+/-" GridPane.columnIndex="3" />
+            <Button fx:id="boton7" mnemonicParsing="false" onAction="#actionNumber" text="7" GridPane.rowIndex="1" />
+            <Button fx:id="boton8" mnemonicParsing="false" onAction="#actionNumber" text="8" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Button fx:id="boton9" mnemonicParsing="false" onAction="#actionNumber" text="9" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+            <Button fx:id="botonDivision" mnemonicParsing="false" onAction="#actionOperation" styleClass="operador" text="/" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+            <Button fx:id="boton4" mnemonicParsing="false" onAction="#actionNumber" text="4" GridPane.rowIndex="2" />
+            <Button fx:id="boton5" mnemonicParsing="false" onAction="#actionNumber" text="5" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <Button fx:id="boton6" mnemonicParsing="false" onAction="#actionNumber" text="6" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+            <Button fx:id="botonMultiplicacion" mnemonicParsing="false" onAction="#actionOperation" styleClass="operador" text="*" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+            <Button fx:id="boton1" mnemonicParsing="false" onAction="#actionNumber" text="1" GridPane.rowIndex="3" />
+            <Button fx:id="boton2" mnemonicParsing="false" onAction="#actionNumber" text="2" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <Button fx:id="boton3" mnemonicParsing="false" onAction="#actionNumber" text="3" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+            <Button fx:id="botonMenos" mnemonicParsing="false" onAction="#actionOperation" styleClass="operador" text="-" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+            <Button fx:id="boton0" mnemonicParsing="false" onAction="#actionNumber" text="0" GridPane.rowIndex="4" />
+            <Button fx:id="botonPunto" mnemonicParsing="false" onAction="#actionNumber" text="." GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <Button fx:id="botonIgual" mnemonicParsing="false" onAction="#actionCalculate" styleClass="operador" text="=" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+            <Button fx:id="botonMas" mnemonicParsing="false" onAction="#actionOperation" styleClass="operador" text="+" GridPane.columnIndex="3" GridPane.rowIndex="4" />
          </children>
       </GridPane>
    </center>
