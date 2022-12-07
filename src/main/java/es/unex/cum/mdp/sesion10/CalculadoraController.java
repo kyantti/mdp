@@ -3,6 +3,8 @@ package main.java.es.unex.cum.mdp.sesion10;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import org.junit.jupiter.params.shadow.com.univocity.parsers.conversions.NumericConversion;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -30,14 +32,14 @@ public class CalculadoraController implements Initializable {
 
     @FXML
     void actionClearEntry(ActionEvent event) {
-		
+		textfield.clear();
     }
 
 	@FXML
 	void actionChangeSign(ActionEvent event){
-		if (textfield.getText().startsWith("-")) {
-			
-		}
+		Double number = Double.parseDouble(currentNumber);
+		number = - number;
+		textfield.setText(number.toString());
 	}
 
     @FXML

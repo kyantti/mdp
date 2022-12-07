@@ -32,9 +32,9 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Button fx:id="botonMsg" mnemonicParsing="false" onAction="#actionMsg" styleClass="especial" text="Msg" />
-            <Button fx:id="botonClearEntry" mnemonicParsing="false" onAction="#actionClearEntry" styleClass="especial" text="CE" GridPane.columnIndex="1" />
-            <Button fx:id="botonClear" mnemonicParsing="false" onAction="#actionClear" styleClass="especial" text="CL" GridPane.columnIndex="2" />
+            <Button fx:id="botonMsg" mnemonicParsing="false" onAction="#actionMsg" styleClass="especiales" text="Msg" />
+            <Button fx:id="botonClearEntry" mnemonicParsing="false" onAction="#actionClearEntry" styleClass="especiales" text="CE" GridPane.columnIndex="1" />
+            <Button fx:id="botonClear" mnemonicParsing="false" onAction="#actionClear" styleClass="especiales" text="CL" GridPane.columnIndex="2" />
             <Button fx:id="botonMasMenos" mnemonicParsing="false" onAction="#actionChangeSign" styleClass="operador" text="+/-" GridPane.columnIndex="3" />
             <Button fx:id="boton7" mnemonicParsing="false" onAction="#actionNumber" text="7" GridPane.rowIndex="1" />
             <Button fx:id="boton8" mnemonicParsing="false" onAction="#actionNumber" text="8" GridPane.columnIndex="1" GridPane.rowIndex="1" />

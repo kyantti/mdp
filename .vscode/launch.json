@@ -6,11 +6,18 @@
     "configurations": [
         {
             "type": "java",
+<<<<<<< HEAD
             "name": "Launch Main",
             "request": "launch",
             "mainClass": "main.java.es.unex.cum.mdp.calcfx.Main",
             "projectName": "mdp_5288cf4c",
             "vmArgs": "--module-path \"C:/Users/pablo/Desktop/javafx-sdk-19/lib\" --add-modules javafx.controls,javafx.fxml"
+=======
+            "name": "Launch Prueba",
+            "request": "launch",
+            "mainClass": "main.java.es.unex.cum.mdp.prueba.Prueba",
+            "projectName": "mdp_6ebd01d8"
+>>>>>>> 2bea5268399d0793dec41426025b28a9d730acf3
         },
         {
             "type": "java",

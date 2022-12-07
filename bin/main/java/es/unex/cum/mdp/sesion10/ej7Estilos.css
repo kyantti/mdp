@@ -9,7 +9,7 @@ linear-gradient(#7ebcea, #2f4b8f), linear-gradient(#426ab7, #263e75), linear-gra
     -fx-font-family: monospace;
 }
 .especiales {
--fx-background-color: #000000, linear-gradient(#ff5400, #be1d00); }
+-fx-background-color: #000000, linear-gradient(#ce4500, #be1d00); }
 .operador {
 -fx-background-color: #000000, linear-gradient(#52A839, #548246);
            
