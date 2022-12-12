@@ -1,4 +1,4 @@
-package main.java.es.unex.cum.mdp.sesion10;
+package main.java.es.unex.cum.mdp.sesion10.model;
 
 public class Calculator {
 	private Double operand1;
