@@ -18,11 +18,11 @@ public class WelcomeController {
 
     @FXML
     void createAccount(ActionEvent event) throws IOException {
-        App.setRoot("view/register");
+        App.setRoot("/main/resources/es/unex/cum/mdp/ef3/view/register");
     }
 
     @FXML
     void login(ActionEvent event) throws IOException {
-        App.setRoot("view/userMenu");
+        App.setRoot("/main/resources/es/unex/cum/mdp/ef3/view/userMenu");
     }
 }

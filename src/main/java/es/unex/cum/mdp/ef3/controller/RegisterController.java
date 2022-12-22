@@ -19,7 +19,7 @@ public class RegisterController {
 
     @FXML
     void createAccount(ActionEvent event) throws IOException {
-        App.setRoot("view/welcome");
+        App.setRoot("/main/resources/es/unex/cum/mdp/ef3/view/register");
     }
 
     @FXML
