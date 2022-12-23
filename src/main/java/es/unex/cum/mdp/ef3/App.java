@@ -7,13 +7,15 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import main.java.es.unex.cum.mdp.ef3.model.Campeonato;
 
 public class App extends Application {
     private static Scene scene;
+    private static Campeonato campeonato = new Campeonato();
 
     @Override
     public void start(Stage stage) throws IOException {
-        scene = new Scene(loadFXML("/main/resources/es/unex/cum/mdp/ef3/view/welcome"), 600, 500);
+        scene = new Scene(loadFXML("/main/resources/es/unex/cum/mdp/ef3/view/main"), 600, 500);
         stage.setScene(scene);
         stage.show();
     }
@@ -25,6 +27,10 @@ public class App extends Application {
     private static Parent loadFXML(String fxml) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
         return fxmlLoader.load();
+    }
+
+    public static Campeonato getCampeonato(){
+        return campeonato;
     }
 
     public static void main(String[] args) {

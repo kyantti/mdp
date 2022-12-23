@@ -1,5 +1,10 @@
 package main.java.es.unex.cum.mdp.ef3.model;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -9,11 +14,17 @@ public class Campeonato {
     private Map <String, Equipo> equipos;
     private Map <Integer, Persona> federados;
     private List <Temporada> temporadas;
+    private List <Usuario> usuarios;
+    private List <String> claves;
 
     public Campeonato(){
         equipos = new HashMap<>();
         federados = new HashMap<>();
         temporadas = new ArrayList<>();
+        usuarios = new ArrayList<>();
+        claves = new ArrayList<>();
+        leerUsuarios();
+        leerClaves();
     }
 
     public Campeonato(Map<String, Equipo> equipos, Map<Integer, Persona> federados,
@@ -21,6 +32,32 @@ public class Campeonato {
         this.equipos = equipos;
         this.federados = federados;
         this.temporadas = temporadas;
+    }
+
+    public void leerUsuarios(){
+        try (BufferedReader reader = new BufferedReader(new FileReader("users.txt"))) {
+            String line = reader.readLine();
+            while (line != null) {
+                String[] fields = line.split("#");
+                String nombre = fields[0];
+                String password = fields[1];
+                String tipo = fields[2];
+                usuarios.add(new Usuario(nombre, password, tipo));
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void leerClaves(){
+        try (BufferedReader reader = new BufferedReader(new FileReader("claves.txt"))) {
+            String line = reader.readLine();
+            while (line != null) {
+                claves.add(line);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public Map<String, Equipo> getEquipos() {
@@ -378,6 +415,35 @@ public class Campeonato {
                 return false;
             } catch (Exception e) {
                 
+            }
+        }
+        return false;
+    }
+
+    public boolean existeUsuario(String nombre){
+        for (Usuario usuario : usuarios) {
+            if (usuario.getNombre().equals(nombre)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean crearCuenta(String nombre, String password, String clave){
+        if (!existeUsuario(nombre)) {
+            String tipo = "";
+            if (claves.contains(clave)) {
+                tipo = "admin";
+            }
+            else if(clave.equals("")){
+                tipo = "normal";
+            }
+            try (BufferedWriter writer = new BufferedWriter(new FileWriter("users.txt", true))) {
+                writer.write(nombre + "#" + password + "#" + tipo);
+                writer.newLine();
+                usuarios.add(new Usuario(nombre, password, tipo));
+            } catch (IOException e) {
+                e.printStackTrace();
             }
         }
         return false;

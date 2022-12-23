@@ -8,7 +8,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import main.java.es.unex.cum.mdp.ef3.App;
 
-public class WelcomeController {
+public class MainController {
 
     @FXML
     private PasswordField password;

@@ -9,6 +9,14 @@
             "name": "Launch App",
             "request": "launch",
             "mainClass": "main.java.es.unex.cum.mdp.sesion11.App",
+            "projectName": "mdp_5288cf4c",
+            "vmArgs": "--module-path \"C:/Users/pablo/Desktop/javafx-sdk-19/lib\" --add-modules javafx.controls,javafx.fxml"
+        },
+        {
+            "type": "java",
+            "name": "Launch App",
+            "request": "launch",
+            "mainClass": "main.java.es.unex.cum.mdp.sesion11.App",
             "projectName": "mdp_6ebd01d8",
             "vmArgs": "--module-path /Users/pablosetrakianbearzotti/Development/sdk/javafx-sdk-19/lib --add-modules javafx.controls,javafx.fxml"
         },

@@ -19,22 +19,12 @@ public class RegisterController {
 
     @FXML
     void createAccount(ActionEvent event) throws IOException {
-        App.setRoot("/main/resources/es/unex/cum/mdp/ef3/view/register");
+        String nombre = userTextField.getText();
+        String password = passwordTextField.getText();
+        String clave = specialCodeTextfield.getText();
+        if (!nombre.isBlank() && !password.isBlank()) {
+            App.getCampeonato().crearCuenta(nombre, password, clave);
+            App.setRoot("/main/resources/es/unex/cum/mdp/ef3/view/main");
+        }
     }
-
-    @FXML
-    void setPassword(ActionEvent event) {
-
-    }
-
-    @FXML
-    void setSpecialCode(ActionEvent event) {
-
-    }
-
-    @FXML
-    void setUser(ActionEvent event) {
-
-    }
-
 }
