@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Polygon?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseEntered="#mostrarTemporadas" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.es.unex.cum.mdp.ef3.controller.AddLigaTemporadaController">
+   <children>
+      <Polygon fill="DODGERBLUE" layoutX="114.0" layoutY="160.0" points="-114.0, 239.99996948242188, 186.0, 239.99996948242188, 186.0, -160.0" stroke="BLACK" strokeType="INSIDE" />
+      <VBox layoutX="354.0" layoutY="142.0" prefHeight="115.0" prefWidth="182.0">
+         <children>
+            <TextField fx:id="nombreTextField" onKeyTyped="#verificarNombre" promptText="Nombre de la liga">
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </TextField>
+            <ComboBox fx:id="temporadaComboBox" onAction="#seleccionarTemporada" prefHeight="26.0" prefWidth="182.0">
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </ComboBox>
+            <Button fx:id="addLigaButton" disable="true" mnemonicParsing="false" onAction="#addLiga" prefHeight="26.0" prefWidth="189.0" text="Añadir">
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </Button>
+         </children>
+      </VBox>
+      <ImageView fitHeight="71.0" fitWidth="182.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/rfef2.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

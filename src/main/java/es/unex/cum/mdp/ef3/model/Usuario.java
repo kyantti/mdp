@@ -1,10 +1,13 @@
 package main.java.es.unex.cum.mdp.ef3.model;
 
-public class Usuario {
+import java.io.Serializable;
+
+public class Usuario implements Serializable {
 
     private String nombre;
     private String password;
     private String tipo;
+    private boolean logueado;
 
     public Usuario(String nombre, String password, String tipo) {
         this.nombre = nombre;
@@ -34,6 +37,14 @@ public class Usuario {
 
     public void setTipo(String tipo) {
         this.tipo = tipo;
+    }
+
+    public boolean isLogueado() {
+        return logueado;
+    }
+
+    public void setLogueado(boolean logueado) {
+        this.logueado = logueado;
     }
 
     @Override
@@ -71,4 +82,5 @@ public class Usuario {
     public String toString() {
         return "Usuario [nombre=" + nombre + ", password=" + password + "]";
     }
+
 }

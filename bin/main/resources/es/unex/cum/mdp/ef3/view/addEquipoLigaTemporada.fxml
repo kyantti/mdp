@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Polygon?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.es.unex.cum.mdp.ef3.controller.AddEquipoLigaTemporadaController">
+   <children>
+      <Polygon fill="DODGERBLUE" layoutX="277.0" layoutY="245.0" points="-277.0, 154.99996948242188, 23.0, 154.99996948242188, 23.0, -245.0" stroke="BLACK" strokeType="INSIDE" />
+      <ImageView fitHeight="52.0" fitWidth="196.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/rfef2.png" />
+         </image>
+      </ImageView>
+      <VBox layoutX="388.0" layoutY="42.0" prefHeight="200.0" prefWidth="100.0">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Temporada" wrappingWidth="105.336669921875">
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </Text>
+            <ComboBox fx:id="temporadaComboBox" onAction="#seleccionarTemporada" onMouseEntered="#mostrarTemporadas" prefWidth="150.0">
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </ComboBox>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Liga" wrappingWidth="105.336669921875">
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </Text>
+            <ComboBox fx:id="ligaComboBox" disable="true" onAction="#seleccionarLiga" onMouseEntered="#mostrarLigas" prefWidth="150.0">
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </ComboBox>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Equipo" wrappingWidth="105.336669921875">
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </Text>
+            <ComboBox fx:id="equipoComboBox" disable="true" onAction="#seleccionarEquipo" onMouseEntered="#mostrarEquipos" prefWidth="150.0">
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </ComboBox>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Coeficiente" wrappingWidth="105.336669921875">
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </Text>
+            <ComboBox fx:id="coeficienteComboBox" disable="true" onAction="#seleccionarCoef" prefWidth="150.0">
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </ComboBox>
+            <Button fx:id="addEquipoLigaButton" disable="true" mnemonicParsing="false" onAction="#addEquipoLiga" prefHeight="26.0" prefWidth="122.0" text="Añadir">
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </Button>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

@@ -1,10 +1,11 @@
 package main.java.es.unex.cum.mdp.ef3.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class Jornada {
+public class Jornada implements Serializable {
     private Date fecha;
     private int numero;
     private List <Partido> partidos;

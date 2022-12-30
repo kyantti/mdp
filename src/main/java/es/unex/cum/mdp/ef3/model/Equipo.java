@@ -1,6 +1,8 @@
 package main.java.es.unex.cum.mdp.ef3.model;
 
-public class Equipo {
+import java.io.Serializable;
+
+public class Equipo implements Serializable {
     protected String nombre;
     protected String ciudad;
     protected int id;

@@ -2,15 +2,17 @@ package main.java.es.unex.cum.mdp.ef3.model;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class Campeonato {
+public class Campeonato implements Serializable{
     private Map <String, Equipo> equipos;
     private Map <Integer, Persona> federados;
     private List <Temporada> temporadas;
@@ -23,41 +25,73 @@ public class Campeonato {
         temporadas = new ArrayList<>();
         usuarios = new ArrayList<>();
         claves = new ArrayList<>();
-        leerUsuarios();
-        leerClaves();
+        try {
+            leerUsuarios();
+            leerClaves();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        
     }
 
-    public Campeonato(Map<String, Equipo> equipos, Map<Integer, Persona> federados,
-            List<Temporada> temporadas) {
+    public Campeonato(Map<String, Equipo> equipos, Map<Integer, Persona> federados, List<Temporada> temporadas) {
         this.equipos = equipos;
         this.federados = federados;
         this.temporadas = temporadas;
     }
 
-    public void leerUsuarios(){
-        try (BufferedReader reader = new BufferedReader(new FileReader("users.txt"))) {
-            String line = reader.readLine();
-            while (line != null) {
-                String[] fields = line.split("#");
-                String nombre = fields[0];
-                String password = fields[1];
-                String tipo = fields[2];
-                usuarios.add(new Usuario(nombre, password, tipo));
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
+    public void leerUsuarios() throws IOException {
+        File file = new File("src/main/resources/es/unex/cum/mdp/ef3/data/users.txt");
+
+        // create the file if it doesn't exist
+        if (!file.exists()) {
+            file.createNewFile();
         }
+
+        // open a BufferedReader on the file
+        BufferedReader reader = new BufferedReader(new FileReader(file));
+
+        // read the lines of the file
+        String line;
+        while ((line = reader.readLine()) != null) {
+            // split the line into its parts
+            String[] parts = line.split("#");
+
+            // assign the parts to variables
+            String user = parts[0];
+            String password = parts[1];
+            String type = parts[2];
+            usuarios.add(new Usuario(user, password, type));
+
+            // process the user, password, and type variables as needed
+        }
+
+        // close the reader
+        reader.close();
     }
 
-    public void leerClaves(){
-        try (BufferedReader reader = new BufferedReader(new FileReader("claves.txt"))) {
-            String line = reader.readLine();
-            while (line != null) {
-                claves.add(line);
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
+    public void leerClaves() throws IOException{
+        File file = new File("src/main/resources/es/unex/cum/mdp/ef3/data/claves.txt");
+
+        // create the file if it doesn't exist
+        if (!file.exists()) {
+            file.createNewFile();
         }
+
+        // open a BufferedReader on the file
+        BufferedReader reader = new BufferedReader(new FileReader(file));
+
+        // read the lines of the file
+        String line;
+        while ((line = reader.readLine()) != null) {
+            claves.add(line);
+
+            // process the user, password, and type variables as needed
+        }
+
+        // close the reader
+        reader.close();
+        
     }
 
     public Map<String, Equipo> getEquipos() {
@@ -82,6 +116,22 @@ public class Campeonato {
 
     public void setTemporadas(List<Temporada> temporadas) {
         this.temporadas = temporadas;
+    }
+
+    public List<Usuario> getUsuarios() {
+        return usuarios;
+    }
+
+    public void setUsuarios(List<Usuario> usuarios) {
+        this.usuarios = usuarios;
+    }
+
+    public List<String> getClaves() {
+        return claves;
+    }
+
+    public void setClaves(List<String> claves) {
+        this.claves = claves;
     }
 
     @Override
@@ -168,10 +218,11 @@ public class Campeonato {
         if (nombre != null && ciudad != null &&  !equipos.containsKey(nombre)){
             Persona directivo = federados.get(id);
             if (directivo != null && directivo.getClass().equals(Directivo.class)) {
-                equipos.put(nombre, new EquipoBuilder().withNombre(nombre).withCiudad(ciudad).withId(id).build());
+                equipos.put(nombre, new EquipoBuilder().withNombre(nombre).withCiudad(ciudad).withId(id).withCargo((Directivo) directivo).build());
                 return true;
             }
         }
+
         return false;
     }
 
@@ -215,7 +266,7 @@ public class Campeonato {
     }
 
     /**
-     * Añade una nueva a partir de un nombre a una temporada indicada por su nombre.
+     * Añade una nueva liga a partir de un nombre a una temporada indicada por su nombre.
      * @param nomTemporada
      * @param nomLiga
      * @return {@code true} si le liga se ha añadido, {@code false} de lo contrario.
@@ -253,7 +304,7 @@ public class Campeonato {
                 }
                 return false;
             } catch (NoLigaException e) {
-
+                e.printStackTrace();
             }
         }
         return false;
@@ -274,8 +325,8 @@ public class Campeonato {
             if (nomTemp != null && nomLiga != null && tipo != null  && liga.getCalendario().isEmpty()) {
                 return liga.crearCalendario(tipo);
             }
-        } catch (NoLigaException e1) {
-
+        } catch (NoLigaException e) {
+            e.printStackTrace();
         }
         return false;
     }
@@ -318,13 +369,13 @@ public class Campeonato {
                         }
                     }
                 } catch (NoLigaException e) {
-                    
+                    e.printStackTrace();
                 }
                 getTempLiga(nomTemp, nomLiga).getEquiposLiga().add(new EquipoLiga(coef, new EquipoBuilder().withNombre(nomEq).build()));
                 return true;
             }
         } catch (NoLigaException e) {
-            
+            e.printStackTrace();
         }
         return false;
     }
@@ -358,10 +409,10 @@ public class Campeonato {
                     }
                 }
             } catch (Exception e) {
-
+                e.printStackTrace();
             }
         }
-        return false; //throw new IlegalArgumentException();
+        return false;
     }
 
     
@@ -377,11 +428,11 @@ public class Campeonato {
             try {
                 getTempLiga(nomTemp, nomLiga).simular();
             } catch (NoLigaException e) {
-                
+                e.printStackTrace();
             }
             return true;
         }
-        return false; //throw new IlegalArgumentException();
+        return false;
     }
 
     
@@ -414,38 +465,30 @@ public class Campeonato {
                 }
                 return false;
             } catch (Exception e) {
-                
-            }
-        }
-        return false;
-    }
-
-    public boolean existeUsuario(String nombre){
-        for (Usuario usuario : usuarios) {
-            if (usuario.getNombre().equals(nombre)) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    public boolean crearCuenta(String nombre, String password, String clave){
-        if (!existeUsuario(nombre)) {
-            String tipo = "";
-            if (claves.contains(clave)) {
-                tipo = "admin";
-            }
-            else if(clave.equals("")){
-                tipo = "normal";
-            }
-            try (BufferedWriter writer = new BufferedWriter(new FileWriter("users.txt", true))) {
-                writer.write(nombre + "#" + password + "#" + tipo);
-                writer.newLine();
-                usuarios.add(new Usuario(nombre, password, tipo));
-            } catch (IOException e) {
                 e.printStackTrace();
             }
         }
         return false;
+    }
+
+    public Usuario getUsuario(String nombre){
+        for (Usuario usuario : usuarios) {
+            if (usuario.getNombre().equals(nombre)) {
+                return usuario;
+            }
+        }
+        return null;
+    }
+
+    public void addUsuario(String nombre, String password, String tipo) {
+        try (BufferedWriter writer = new BufferedWriter(
+                new FileWriter("src/main/resources/es/unex/cum/mdp/ef3/data/users.txt", true))) {
+            writer.write(nombre + "#" + password + "#" + tipo);
+            writer.newLine();
+            usuarios.add(new Usuario(nombre, password, tipo));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 }

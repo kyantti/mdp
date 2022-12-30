@@ -1,8 +1,9 @@
 package main.java.es.unex.cum.mdp.ef3.model;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class EquipoLiga {
+public class EquipoLiga implements Serializable {
     protected int coef;
     protected Equipo equipo;
     protected Estadistica estadistica;

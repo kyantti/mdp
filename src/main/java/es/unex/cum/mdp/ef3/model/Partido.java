@@ -1,9 +1,10 @@
 package main.java.es.unex.cum.mdp.ef3.model;
 
+import java.io.Serializable;
 import java.util.LinkedList;
 import java.util.List;
 
-public abstract class Partido {
+public abstract class Partido implements Serializable {
     private int id;
     private int puntosLocal;
     private int puntosVisitante;

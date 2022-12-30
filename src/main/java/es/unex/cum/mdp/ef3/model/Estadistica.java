@@ -1,6 +1,8 @@
 package main.java.es.unex.cum.mdp.ef3.model;
 
-public abstract class Estadistica{
+import java.io.Serializable;
+
+public abstract class Estadistica implements Serializable{
     protected int puntos;
     protected int partJugados;
     protected int partGanados;

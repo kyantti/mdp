@@ -1,28 +1,134 @@
 package main.java.es.unex.cum.mdp.ef3.controller;
 
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.net.URL;
+import java.util.ResourceBundle;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import main.java.es.unex.cum.mdp.ef3.App;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyEvent;
+import javafx.stage.Stage;
+import main.java.es.unex.cum.mdp.ef3.model.Temporada;
+import main.java.es.unex.cum.mdp.ef3.model.Campeonato;
+import main.java.es.unex.cum.mdp.ef3.model.Usuario;
 
-public class MainController {
+public class MainController implements Initializable {
+
+    private Campeonato campeonato;
+    private Usuario usuario;
+
+    private Stage stage;
+	private Scene scene;
+	private Parent root;
 
     @FXML
-    private PasswordField password;
+    private Button iniciarSesionButton;
+
+    @FXML
+    private PasswordField passwordTexField;
 
     @FXML
     private TextField userTextField;
 
+    public Campeonato getCampeonato() {
+        return campeonato;
+    }
+
+    public void setCampeonato(Campeonato campeonato) {
+        this.campeonato = campeonato;
+    }
+
+    private void verificar() {
+        usuario = campeonato.getUsuario(userTextField.getText());
+        if (usuario != null && usuario.getPassword().equals(passwordTexField.getText())) {
+            iniciarSesionButton.setDisable(false);
+        } else {
+            iniciarSesionButton.setDisable(true);
+        }
+    }
+
+    @FXML
+    void verificarUsuario(KeyEvent event) {
+        verificar();
+    }
+
+    @FXML
+    void verificarPassword(KeyEvent event) {
+        verificar();
+    }
+
     @FXML
     void createAccount(ActionEvent event) throws IOException {
-        App.setRoot("/main/resources/es/unex/cum/mdp/ef3/view/register");
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/main/resources/es/unex/cum/mdp/ef3/view/register.fxml"));	
+		root = loader.load();	
+		
+		RegisterController registerController = loader.getController();
+		registerController.setMainController(this);
+		
+		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+		scene = new Scene(root);
+		stage.setScene(scene);
+		stage.show();
+
     }
 
     @FXML
     void login(ActionEvent event) throws IOException {
-        App.setRoot("/main/resources/es/unex/cum/mdp/ef3/view/userMenu");
+        
+        if (usuario.getTipo().equals("admin")) {
+            usuario.setLogueado(true);
+
+            FXMLLoader loader = new FXMLLoader(
+                    getClass().getResource("/main/resources/es/unex/cum/mdp/ef3/view/adminMenu.fxml"));
+            root = loader.load();
+
+            AdminMenuController adminMenuController = loader.getController();
+            adminMenuController.setMainController(this);
+
+            adminMenuController.getBienvenidoLabel().setText("Bienvenido " + usuario.getNombre());
+
+            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        }
+        /*
+         * else if (usuario.getPassword().equals(passwordTexField.getText()) &&
+         * usuario.getTipo().equals("normal")) {
+         * FXMLLoader loader = new FXMLLoader(getClass().getResource(
+         * "/main/resources/es/unex/cum/mdp/ef3/view/normalMenu.fxml"));
+         * root = loader.load();
+         * 
+         * 
+         * //
+         * 
+         * stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+         * scene = new Scene(root);
+         * stage.setScene(scene);
+         * stage.show();
+         * }
+         */
+    }
+
+    @Override
+    public void initialize(URL arg0, ResourceBundle arg1) {
+        try (ObjectInputStream archivoObjetosEnt = new ObjectInputStream( new FileInputStream("src/main/resources/es/unex/cum/mdp/ef3/data/datos.dat"))) {
+            campeonato = (Campeonato) archivoObjetosEnt.readObject();
+        }
+        catch (ClassNotFoundException | IOException e) {
+            campeonato = new Campeonato();
+        }  
     }
 }

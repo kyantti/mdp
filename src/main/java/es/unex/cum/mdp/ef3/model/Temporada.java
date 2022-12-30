@@ -1,9 +1,10 @@
 package main.java.es.unex.cum.mdp.ef3.model;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Temporada {
+public class Temporada implements Serializable {
     private String nombre;
     private Map <String, Liga> ligas;
 

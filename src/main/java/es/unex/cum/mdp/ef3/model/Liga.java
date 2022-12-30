@@ -1,10 +1,11 @@
 package main.java.es.unex.cum.mdp.ef3.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
-public class Liga {
+public class Liga implements Serializable {
     private String nombre;
     private List <Jornada> calendario;
     private List <EquipoLiga> equiposLiga;
@@ -157,7 +158,7 @@ public class Liga {
      * @param tipo
      * @return boolean
      */
-    public boolean crearCalendario(String tipo) {
+    public boolean       crearCalendario(String tipo) {
         int numEquipos = equiposLiga.size();
         int numDias = (numEquipos - 1); // Dias que tendrá el torneo
 

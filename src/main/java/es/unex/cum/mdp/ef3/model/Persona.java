@@ -1,6 +1,8 @@
 package main.java.es.unex.cum.mdp.ef3.model;
 
-public class Persona {
+import java.io.Serializable;
+
+public class Persona implements Serializable {
     private String nombre;
     private int edad;
     private int id;
