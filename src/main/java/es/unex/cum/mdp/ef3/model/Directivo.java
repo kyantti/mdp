@@ -8,8 +8,8 @@ public class Directivo extends Persona {
         this.puesto = puesto;
     }
 
-    public Directivo(String nombre, int edad, int id, String puesto) {
-        super(nombre, edad, id);
+    public Directivo(String nombre, int edad, int id, String puesto, String aspecto) {
+        super(nombre, edad, id, aspecto);
         this.puesto = puesto;
     }
 

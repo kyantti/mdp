@@ -4,11 +4,14 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
+import main.java.es.unex.cum.mdp.ef3.model.NoLigaException;
 import main.java.es.unex.cum.mdp.ef3.model.Temporada;
 
 public class AddLigaTemporadaController {
@@ -39,8 +42,8 @@ public class AddLigaTemporadaController {
     }
 
     @FXML
-    void verificarNombre(KeyEvent event) {
-        if (!nombreTextField.getText().isEmpty() && !nombreTextField.getText().isBlank()) {
+    void verificarNombre(KeyEvent event) throws NoLigaException {
+        if (!nombreTextField.getText().isEmpty() && !nombreTextField.getText().isBlank() && mainController.getCampeonato().getTempLiga(temporadaComboBox.getSelectionModel().getSelectedItem(), nombreTextField.getText()) == null) {
             registrable[0] = true;
         } else {
             registrable[0] = false;
@@ -67,7 +70,11 @@ public class AddLigaTemporadaController {
 
     @FXML
     void addLiga(ActionEvent event) {
-        mainController.getCampeonato().crearLigaTemporada(temporadaComboBox.getSelectionModel().getSelectedItem(),
-                nombreTextField.getText());
+        if (mainController.getCampeonato().crearLigaTemporada(temporadaComboBox.getSelectionModel().getSelectedItem(),
+                nombreTextField.getText())) {
+            Node source = (Node) event.getSource();
+            Stage stage = (Stage) source.getScene().getWindow();
+            stage.close();
+        }
     }
 }

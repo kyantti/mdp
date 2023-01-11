@@ -158,12 +158,12 @@ public class Liga implements Serializable {
      * @param tipo
      * @return boolean
      */
-    public boolean       crearCalendario(String tipo) {
+    public boolean crearCalendario(String tipo) {
         int numEquipos = equiposLiga.size();
         int numDias = (numEquipos - 1); // Dias que tendrá el torneo
 
         // TODO: Compruebo que hay equipos
-        if (!equiposLiga.isEmpty()) {
+        if (equiposLiga.size() > 1) {
             // TODO: Compruebo que para equipo hay al menos tantos jugadores como Partido.getNumEnfrentamiento()*2
             for (EquipoLiga equipoLiga : equiposLiga) {
                 if (equipoLiga.getJugadores().size() < Partido.getNumEnfrentamiento() * 2) {

@@ -6,10 +6,11 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.input.MouseEvent;
-import main.java.es.unex.cum.mdp.ef3.model.Equipo;
+import javafx.stage.Stage;
 import main.java.es.unex.cum.mdp.ef3.model.EquipoLiga;
 import main.java.es.unex.cum.mdp.ef3.model.Jugador;
 import main.java.es.unex.cum.mdp.ef3.model.Liga;
@@ -130,6 +131,11 @@ public class AddJugadorEquipoLigaController {
         String liga = ligaComboBox.getSelectionModel().getSelectedItem();
         String equipo = equipoComboBox.getSelectionModel().getSelectedItem();
         int id = Integer.parseInt(jugadorComboBox.getSelectionModel().getSelectedItem().split(" ID: ")[1]);
-        mainController.getCampeonato().addJugadorEquipoLigaTemporada(temporada, liga, equipo, id);
+
+        if (mainController.getCampeonato().addJugadorEquipoLigaTemporada(temporada, liga, equipo, id)) {
+            Node source = (Node) event.getSource();
+            Stage stage = (Stage) source.getScene().getWindow();
+            stage.close();
+        }
     }
 }

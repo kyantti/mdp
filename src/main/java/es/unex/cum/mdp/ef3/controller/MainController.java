@@ -126,6 +126,7 @@ public class MainController implements Initializable {
     public void initialize(URL arg0, ResourceBundle arg1) {
         try (ObjectInputStream archivoObjetosEnt = new ObjectInputStream( new FileInputStream("src/main/resources/es/unex/cum/mdp/ef3/data/datos.dat"))) {
             campeonato = (Campeonato) archivoObjetosEnt.readObject();
+            System.out.println("OK");
         }
         catch (ClassNotFoundException | IOException e) {
             campeonato = new Campeonato();

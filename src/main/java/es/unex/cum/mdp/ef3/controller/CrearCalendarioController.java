@@ -1,15 +1,21 @@
 package main.java.es.unex.cum.mdp.ef3.controller;
 
+import java.util.List;
 import java.util.Map;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
+import main.java.es.unex.cum.mdp.ef3.model.EquipoLiga;
 import main.java.es.unex.cum.mdp.ef3.model.Liga;
+import main.java.es.unex.cum.mdp.ef3.model.NoLigaException;
+import main.java.es.unex.cum.mdp.ef3.model.Partido;
 import main.java.es.unex.cum.mdp.ef3.model.Temporada;
 
 public class CrearCalendarioController {
@@ -59,13 +65,27 @@ public class CrearCalendarioController {
     }
 
     @FXML
-    void seleccionarLiga(ActionEvent event) {
-        crearCalendarioButton.setDisable(false);
+    void seleccionarLiga(ActionEvent event) throws NoLigaException {
+        if (mainController.getCampeonato().isCalendarioCreable(temporadaComboBox.getSelectionModel().getSelectedItem() , ligaComboBox.getSelectionModel().getSelectedItem())) {
+            crearCalendarioButton.setDisable(false);
+        } else {
+            crearCalendarioButton.setDisable(true);
+        }
     }
 
     @FXML
-    void crearCalendario(ActionEvent event) {
+    void crearCalendario(ActionEvent event) throws NoLigaException{
+        String temporada = temporadaComboBox.getSelectionModel().getSelectedItem();
+        String liga = ligaComboBox.getSelectionModel().getSelectedItem();
 
+        //if (mainController.getCampeonato().crearCalendario(temporada, liga, "Futbolin")) {
+            
+        //}
+
+        Node source = (Node) event.getSource();
+        Stage stage = (Stage) source.getScene().getWindow();
+        stage.close();
+        
     }
 
 }

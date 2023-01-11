@@ -9,8 +9,8 @@ public class Juez extends Persona {
         antiguedad = 0;
     }
 
-    public Juez(String nombre, int edad, int id, int antiguedad) {
-        super(nombre, edad, id);
+    public Juez(String nombre, int edad, int id, int antiguedad, String aspecto) {
+        super(nombre, edad, id, aspecto);
         this.antiguedad = antiguedad;
     }
 

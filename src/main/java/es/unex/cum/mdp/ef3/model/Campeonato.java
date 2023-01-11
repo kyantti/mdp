@@ -248,9 +248,9 @@ public class Campeonato implements Serializable{
      * @param value2
      * @return {@code true} si le persona se ha añadido, {@code false} de lo contrario.
      */
-    public boolean addPersona(String tipo, String nombre, int id, int edad, String value1, String value2) /*throws IllegalArgumentException*/{
+    public boolean addPersona(String tipo, String nombre, int id, int edad, String value1, String value2, String aspecto) /*throws IllegalArgumentException*/{
         if (tipo != null && nombre != null && !federados.containsKey(id)) {
-            federados.put(id, new FactoriaPersona().build(tipo, nombre, id, edad, value1, value2));
+            federados.put(id, new FactoriaPersona().build(tipo, nombre, id, edad, value1, value2, aspecto));
             return true;
         }
         return false;
@@ -372,6 +372,7 @@ public class Campeonato implements Serializable{
                     e.printStackTrace();
                 }
                 getTempLiga(nomTemp, nomLiga).getEquiposLiga().add(new EquipoLiga(coef, new EquipoBuilder().withNombre(nomEq).build()));
+                getEquipo(nomEq).setEnLiga(true);
                 return true;
             }
         } catch (NoLigaException e) {
@@ -490,5 +491,21 @@ public class Campeonato implements Serializable{
             e.printStackTrace();
         }
 
+    }
+
+    public boolean isCalendarioCreable(String temporada, String liga) throws NoLigaException{
+        List <EquipoLiga> equiposLiga = getTempLiga(temporada, liga).getEquiposLiga();
+        if (equiposLiga.size() > 1) {
+            // TODO: Compruebo que para equipo hay al menos tantos jugadores como Partido.getNumEnfrentamiento()*2
+            for (EquipoLiga equipoLiga : equiposLiga) {
+                if (equipoLiga.getJugadores().size() < Partido.getNumEnfrentamiento() * 2) {
+                    return false;
+                }
+            }
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 }

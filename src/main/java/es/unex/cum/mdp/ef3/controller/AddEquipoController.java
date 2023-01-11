@@ -15,11 +15,13 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 import main.java.es.unex.cum.mdp.ef3.model.Directivo;
 import main.java.es.unex.cum.mdp.ef3.model.Persona;
 
@@ -80,7 +82,7 @@ public class AddEquipoController implements Initializable{
 
     @FXML
     void verificarNombre(KeyEvent event) {
-        if (!nombreTextField.getText().isEmpty() && !nombreTextField.getText().isBlank()) {
+        if (!nombreTextField.getText().isEmpty() && !nombreTextField.getText().isBlank() && mainController.getCampeonato().getEquipo(nombreTextField.getText()) == null) {
             registrable[0] = true;
         } else {
             registrable[0] = false;
@@ -132,7 +134,11 @@ public class AddEquipoController implements Initializable{
         String ciudad = ciudadTextField.getText();
         int id = Integer.parseInt(directivoComboBox.getSelectionModel().getSelectedItem().split(" ID: ")[1]);
 
-        mainController.getCampeonato().addEquipo(nombre, ciudad, id);
+        if (mainController.getCampeonato().addEquipo(nombre, ciudad, id)) {
+            Node source = (Node) event.getSource();
+            Stage stage = (Stage) source.getScene().getWindow();
+            stage.close();
+        }
     }
 
 }

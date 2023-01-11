@@ -9,9 +9,11 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 import main.java.es.unex.cum.mdp.ef3.model.Equipo;
 import main.java.es.unex.cum.mdp.ef3.model.Liga;
 import main.java.es.unex.cum.mdp.ef3.model.Temporada;
@@ -91,7 +93,9 @@ public class AddEquipoLigaTemporadaController implements Initializable {
         ObservableList<String> equiposObservableList = FXCollections.observableArrayList();
         if (mainController.getCampeonato().getEquipos() != null) {
             for (Map.Entry<String, Equipo> set : mainController.getCampeonato().getEquipos().entrySet()) {
-                equiposObservableList.add(set.getValue().getNombre());
+                if (!set.getValue().isEnLiga()) {
+                    equiposObservableList.add(set.getValue().getNombre());
+                }
             }
         }
         equipoComboBox.setItems(equiposObservableList);
@@ -118,7 +122,12 @@ public class AddEquipoLigaTemporadaController implements Initializable {
         String nomLiga = ligaComboBox.getSelectionModel().getSelectedItem();
         String nomEq = equipoComboBox.getSelectionModel().getSelectedItem();
         int coef = coeficienteComboBox.getSelectionModel().getSelectedItem();
-        mainController.getCampeonato().addEquipoLigaTemporada(nomTemp, nomLiga, nomEq, coef);
+
+        if (mainController.getCampeonato().addEquipoLigaTemporada(nomTemp, nomLiga, nomEq, coef)) {
+            Node source = (Node) event.getSource();
+            Stage stage = (Stage) source.getScene().getWindow();
+            stage.close();
+        }
     }
 
 }

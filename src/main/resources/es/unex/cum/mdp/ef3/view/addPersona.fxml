@@ -54,7 +54,7 @@
             <TextField fx:id="nombreTextField" onKeyTyped="#verficarNombre" promptText="Nombre" />
             <DatePicker id="edad" fx:id="edadDatePicker" onAction="#seleccionarEdad" prefHeight="26.0" prefWidth="280.0" promptText="Fecha de nacimiento" GridPane.rowIndex="1" />
             <DatePicker fx:id="antiguedadDatePicker" onAction="#seleccionarAntiguedad" prefHeight="26.0" prefWidth="215.0" promptText="Antiguedad" visible="false" GridPane.rowIndex="2" />
-            <ComboBox fx:id="puestoComboBox" onAction="#seleccionarPuesto" prefHeight="26.0" prefWidth="206.0" promptText="Puesto" visible="false" GridPane.rowIndex="2" />
+            <ComboBox fx:id="puestoComboBox" onAction="#seleccionarPuesto" prefHeight="26.0" prefWidth="206.0" visible="false" GridPane.rowIndex="2" />
             <ComboBox fx:id="coeficienteComboBox" onAction="#seleccionarCoef" prefHeight="26.0" prefWidth="275.0" GridPane.rowIndex="3" />
             <Button fx:id="addPersonaButton" disable="true" mnemonicParsing="false" onAction="#addPersona" prefHeight="26.0" prefWidth="102.0" text="Añadir" GridPane.rowIndex="5">
                <GridPane.margin>
@@ -64,27 +64,27 @@
             <TextField id="nick" fx:id="nickTextField" onKeyTyped="#verificarNick" prefHeight="26.0" prefWidth="200.0" promptText="Nick" GridPane.rowIndex="2" />
             <HBox prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="4">
                <children>
-                  <ToggleButton fx:id="negroButton" mnemonicParsing="false" onAction="#seleccionarAspecto">
+                  <ToggleButton fx:id="blancoMorenoButton" mnemonicParsing="false" onAction="#seleccionarAspecto" prefHeight="44.0" prefWidth="44.0" HBox.hgrow="NEVER">
                      <toggleGroup>
                         <ToggleGroup fx:id="grupo" />
                      </toggleGroup>
                      <HBox.margin>
-                        <Insets left="10.0" right="50.0" />
+                        <Insets left="15.0" />
                      </HBox.margin>
                   </ToggleButton>
-                  <ToggleButton fx:id="blancoButton" mnemonicParsing="false" onAction="#seleccionarAspecto" toggleGroup="$grupo">
+                  <ToggleButton fx:id="blancoRubioButton" mnemonicParsing="false" onAction="#seleccionarAspecto" prefHeight="44.0" prefWidth="44.0" toggleGroup="$grupo">
                      <HBox.margin>
-                        <Insets left="10.0" right="50.0" />
+                        <Insets left="15.0" />
                      </HBox.margin>
                   </ToggleButton>
-                  <ToggleButton fx:id="medioButton" mnemonicParsing="false" onAction="#seleccionarAspecto" toggleGroup="$grupo">
+                  <ToggleButton fx:id="morenoButton" mnemonicParsing="false" onAction="#seleccionarAspecto" prefHeight="44.0" prefWidth="44.0" toggleGroup="$grupo">
                      <HBox.margin>
-                        <Insets left="10.0" right="50.0" />
+                        <Insets left="15.0" />
                      </HBox.margin>
                   </ToggleButton>
-                  <ToggleButton fx:id="morenoButton" mnemonicParsing="false" onAction="#seleccionarAspecto" toggleGroup="$grupo">
+                  <ToggleButton fx:id="negroButton" mnemonicParsing="false" onAction="#seleccionarAspecto" prefHeight="44.0" prefWidth="44.0" toggleGroup="$grupo">
                      <HBox.margin>
-                        <Insets left="10.0" right="50.0" />
+                        <Insets left="15.0" />
                      </HBox.margin>
                   </ToggleButton>
                </children>

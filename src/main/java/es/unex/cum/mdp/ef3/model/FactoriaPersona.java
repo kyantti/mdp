@@ -12,17 +12,17 @@ public class FactoriaPersona {
      * @param value2
      * @return Persona
      */
-    public Persona build(String tipo, String nombre, int id, int edad, String value1, String value2){
+    public Persona build(String tipo, String nombre, int id, int edad, String value1, String value2, String aspecto){
         Persona persona = null;
 
         if (tipo.equals("Jugador")) {
-            persona = new Jugador(nombre, edad, id, value1, Integer.parseInt(value2));
+            persona = new Jugador(nombre, edad, id, value1, Integer.parseInt(value2), aspecto);
         }
         else if(tipo.equals("Juez")){
-            persona = new Juez(nombre, edad, id, Integer.parseInt(value1));
+            persona = new Juez(nombre, edad, id, Integer.parseInt(value1), aspecto);
         }
         else if(tipo.equals("Directivo")){
-            persona = new Directivo(nombre, edad, id, value1);
+            persona = new Directivo(nombre, edad, id, value1, aspecto);
         }
 
         return persona;

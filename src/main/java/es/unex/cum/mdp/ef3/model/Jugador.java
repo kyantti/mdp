@@ -5,8 +5,8 @@ public class Jugador extends Persona implements Comparable <Jugador> {
     private String nick;
     private int coef;
 
-    public Jugador(String nombre, int edad, int id, String nick, int coef) {
-        super(nombre, edad, id);
+    public Jugador(String nombre, int edad, int id, String nick, int coef, String aspecto) {
+        super(nombre, edad, id, aspecto);
         this.nick = nick;
         this.coef = coef;
     }
