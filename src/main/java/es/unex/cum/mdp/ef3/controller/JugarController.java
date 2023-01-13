@@ -95,8 +95,7 @@ public class JugarController implements Initializable {
 
     @FXML
     void seleccionarTemp(ActionEvent event) {
-        jugable[0] = true;
-        verificar();
+        ligaComboBox.setDisable(false);
     }
 
     @FXML
@@ -113,8 +112,7 @@ public class JugarController implements Initializable {
 
     @FXML
     void seleccionarLiga(ActionEvent event) {
-        jugable[1] = true;
-        verificar();
+        jornadaComboBox.setDisable(false);
     }
 
     @FXML
@@ -123,6 +121,7 @@ public class JugarController implements Initializable {
         Liga liga = mainController.getCampeonato().getTempLiga(tempComboBox.getSelectionModel().getSelectedItem(), ligaComboBox.getSelectionModel().getSelectedItem());
         if (liga != null) {
             for (Jornada jornada : liga.getCalendario()) {
+                System.out.println(jornada.toString());
                 jornadasObservableList.add(jornada.getNumero());
             }
         }
@@ -131,8 +130,7 @@ public class JugarController implements Initializable {
 
     @FXML
     void seleccionarJornada(ActionEvent event) {
-        jugable[2] = true;
-        verificar();
+        partidoComboBox.setDisable(false);
     }
 
     @FXML
@@ -156,28 +154,32 @@ public class JugarController implements Initializable {
         escudoLocal.setImage(new Image(new FileInputStream(partido.getLocal().getE().getEscudo())));
         escudoVisitante.setImage(new Image(new FileInputStream(partido.getVisitante().getE().getEscudo())));
 
+        golLocalComboBox.setDisable(false);
+
     }
 
     @FXML
     void seleccionarGolesLocal(ActionEvent event) {
-
+        golVisComboBox.setDisable(false);
     }
 
     @FXML
     void seleccionarGolesVis(ActionEvent event) {
-
+        jugarButton.setDisable(false);
     }
 
-    private void verificar(){
-        if (jugable[0] && jugable[1] && jugable[2] && jugable[3] && jugable[4] && jugable[5]) {
-            jugarButton.setDisable(false);
-        } else {
-            jugarButton.setDisable(true);
-        }
-    }
 
     @FXML
     void jugar(ActionEvent event) {
+        String nomTemp = tempComboBox.getSelectionModel().getSelectedItem();
+        String nomLiga = ligaComboBox.getSelectionModel().getSelectedItem();
+        int numJornada = jornadaComboBox.getSelectionModel().getSelectedItem();
+        int idPartido = partidoComboBox.getSelectionModel().getSelectedItem();
+        int golLocal = golLocalComboBox.getSelectionModel().getSelectedItem();
+        int golVis = golVisComboBox.getSelectionModel().getSelectedItem();
 
+        if (mainController.getCampeonato().jugar(nomTemp, nomLiga, numJornada, idPartido, golLocal, golVis)) {
+            
+        }
     }
 }
