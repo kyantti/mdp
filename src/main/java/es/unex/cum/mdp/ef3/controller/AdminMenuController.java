@@ -133,8 +133,17 @@ public class AdminMenuController{
     }
 
     @FXML
-    void jugar(ActionEvent event) {
-
+    void jugar(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/main/resources/es/unex/cum/mdp/ef3/view/jugar.fxml"));	
+		root = loader.load();
+        
+        JugarController jugarController = loader.getController();
+		jugarController.setMainController(mainController);
+		
+		stage = new Stage();
+		scene = new Scene(root);
+		stage.setScene(scene);
+		stage.show();
     }
 
     @FXML

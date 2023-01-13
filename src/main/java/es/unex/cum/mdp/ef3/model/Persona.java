@@ -8,7 +8,6 @@ public class Persona implements Serializable {
     private int id;
     private String aspecto;
     
-
     public Persona (){
         nombre = "";
 		id    =  0;
@@ -70,6 +69,14 @@ public class Persona implements Serializable {
     public void setId(int id) {
         this.id = id;
     }
+
+    public String getAspecto() {
+        return aspecto;
+    }
+
+    public void setAspecto(String aspecto) {
+        this.aspecto = aspecto;
+    }
     
     /** 
      * @return int
@@ -108,14 +115,14 @@ public class Persona implements Serializable {
             return false;
         return true;
     }
-    
+
     /** 
      * @return String
      */
+
     @Override
     public String toString() {
-        return "Persona [nombre=" + nombre + ", edad=" + edad + ", id=" + id + "]";
+        return "Persona [nombre=" + nombre + ", edad=" + edad + ", id=" + id + ", aspecto=" + aspecto + "]";
     }
 
-    
 }

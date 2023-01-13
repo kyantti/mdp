@@ -6,6 +6,7 @@ public class EquipoBuilder {
 	private String ciudad;
 	private int id;
 	private Directivo cargo;
+	private String escudo;
 
 	public EquipoBuilder() {
 		nombre = "";
@@ -23,8 +24,6 @@ public class EquipoBuilder {
 		return this;
 	}
 
-	
-	
 	/** 
 	 * Añade el campo "Ciudad" al constructor del equipo.
 	 * @param ciudad
@@ -57,6 +56,10 @@ public class EquipoBuilder {
 		return this;
 	}
 
+	public EquipoBuilder withEscudo(final String escudo) {
+		this.escudo = escudo;
+		return this;
+	}
 
 	
 	/** 
@@ -64,7 +67,7 @@ public class EquipoBuilder {
 	 * @return Equipo
 	 */
 	public Equipo build() {
-		return new Equipo(this.nombre, this.ciudad, this.id);
+		return new Equipo(this.nombre, this.ciudad, this.id, this.escudo);
 	}
 
 	

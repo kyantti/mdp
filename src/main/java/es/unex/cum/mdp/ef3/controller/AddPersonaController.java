@@ -81,7 +81,7 @@ public class AddPersonaController implements Initializable {
 
     public void verificar(){
         if (tipoComboBox.getSelectionModel().getSelectedItem().equals("Jugador")) {
-            if (jugadorRegistrable[0] && jugadorRegistrable[1] && jugadorRegistrable[2] && jugadorRegistrable[3] && juezRegistrable[4]) {
+            if (jugadorRegistrable[0] && jugadorRegistrable[1] && jugadorRegistrable[2] && jugadorRegistrable[3] && jugadorRegistrable[4]) {
                 addPersonaButton.setDisable(false);
             } else {
                 addPersonaButton.setDisable(true);

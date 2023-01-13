@@ -214,11 +214,11 @@ public class Campeonato implements Serializable{
      * @param nombre
      * @return {@code true} si el equipo se ha añadido, {@code false} de lo contrario.
      */
-    public boolean addEquipo(String nombre, String ciudad, int id) {
+    public boolean addEquipo(String nombre, String ciudad, int id, String escudo) {
         if (nombre != null && ciudad != null &&  !equipos.containsKey(nombre)){
             Persona directivo = federados.get(id);
             if (directivo != null && directivo.getClass().equals(Directivo.class)) {
-                equipos.put(nombre, new EquipoBuilder().withNombre(nombre).withCiudad(ciudad).withId(id).withCargo((Directivo) directivo).build());
+                equipos.put(nombre, new EquipoBuilder().withNombre(nombre).withCiudad(ciudad).withId(id).withCargo((Directivo) directivo).withEscudo(escudo).build());
                 return true;
             }
         }

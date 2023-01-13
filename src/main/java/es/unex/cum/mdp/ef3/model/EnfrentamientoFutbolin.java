@@ -1,6 +1,8 @@
 package main.java.es.unex.cum.mdp.ef3.model;
 
-public class EnfrentamientoFutbolin implements Enfrentamiento {
+import java.io.Serializable;
+
+public class EnfrentamientoFutbolin implements Enfrentamiento, Serializable {
 
     private int local;
     private int visitante;

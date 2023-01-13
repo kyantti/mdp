@@ -49,3 +49,5 @@ Valladolid
 Vizcaya
 Zamora
 Zaragoza
+Buenos Aires
+Rosario

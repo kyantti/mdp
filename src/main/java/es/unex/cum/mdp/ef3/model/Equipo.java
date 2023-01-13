@@ -8,6 +8,7 @@ public class Equipo implements Serializable {
     protected int id;
     protected Directivo cargo;
     protected boolean enLiga;
+    protected String escudo;
 
     public Equipo(String nombre){
         this.nombre = nombre;
@@ -15,10 +16,11 @@ public class Equipo implements Serializable {
         cargo = new Directivo("");
     }
 
-    public Equipo(String nombre, String ciudad, int id) {
+    public Equipo(String nombre, String ciudad, int id, String escudo) {
         this.nombre = nombre;
         this.ciudad = ciudad;
         this.id = id;
+        this.escudo = escudo;
     }
     
     public String getNombre() {
@@ -56,6 +58,14 @@ public class Equipo implements Serializable {
         this.enLiga = enLiga;
     }
 
+    public String getEscudo() {
+        return escudo;
+    }
+
+    public void setEscudo(String escudo) {
+        this.escudo = escudo;
+    }
+
     @Override
     public int hashCode() {
         final int prime = 31;
@@ -91,11 +101,11 @@ public class Equipo implements Serializable {
             return false;
         return true;
     }
+
     @Override
     public String toString() {
-        return "Equipo [nombre=" + nombre + ", ciudad=" + ciudad + ", cargo=" + cargo + "]";
+        return "Equipo [nombre=" + nombre + ", ciudad=" + ciudad + ", id=" + id + ", cargo=" + cargo + ", enLiga="
+                + enLiga + ", escudo=" + escudo + "]";
     }
-
-
     
 }

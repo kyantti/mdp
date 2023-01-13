@@ -18,7 +18,11 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.ContentDisplay;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleButton;
+import javafx.scene.control.ToggleGroup;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
@@ -27,7 +31,9 @@ import main.java.es.unex.cum.mdp.ef3.model.Persona;
 
 public class AddEquipoController implements Initializable{
 
-    private boolean[] registrable = new boolean[3];
+    private String escudo;
+
+    private boolean[] registrable = new boolean[4];
 
     private List <String> ciudades = new ArrayList<>();
     
@@ -36,6 +42,21 @@ public class AddEquipoController implements Initializable{
 
     @FXML
     private ComboBox<String> directivoComboBox;
+
+    @FXML
+    private ToggleGroup grupo;
+
+    @FXML
+    private ToggleButton escudo1Button;
+
+    @FXML
+    private ToggleButton escudo2Button;
+
+    @FXML
+    private ToggleButton escudo3Button;
+
+    @FXML
+    private ToggleButton escudo4Button;
 
     @FXML
     private Button addEquipoButton;
@@ -49,8 +70,49 @@ public class AddEquipoController implements Initializable{
         this.mainController = mainController;
     }
 
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        try {
+            leerCiudades();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        //Boca jr
+        ImageView escudo1 = new ImageView(getClass().getResource("/main/resources/es/unex/cum/mdp/ef3/images/escudo1.png").toExternalForm());
+        escudo1Button.setGraphic(escudo1);
+        escudo1Button.setContentDisplay(ContentDisplay.TOP);
+        escudo1.fitWidthProperty().bind(escudo1Button.widthProperty().divide(1.6));
+        escudo1.setPreserveRatio(true);
+        escudo1Button.setMaxWidth(Double.MAX_VALUE);
+
+        //Riverplate
+        ImageView escudo2 = new ImageView(getClass().getResource("/main/resources/es/unex/cum/mdp/ef3/images/escudo2.png").toExternalForm());
+        escudo2Button.setGraphic(escudo2);
+        escudo2Button.setContentDisplay(ContentDisplay.TOP);
+        escudo2.fitWidthProperty().bind(escudo2Button.widthProperty().divide(1.6));
+        escudo2.setPreserveRatio(true);
+        escudo2Button.setMaxWidth(Double.MAX_VALUE);
+
+        //Newell
+        ImageView escudo3 = new ImageView(getClass().getResource("/main/resources/es/unex/cum/mdp/ef3/images/escudo3.png").toExternalForm());
+        escudo3Button.setGraphic(escudo3);
+        escudo3Button.setContentDisplay(ContentDisplay.TOP);
+        escudo3.fitWidthProperty().bind(escudo3Button.widthProperty().divide(1.6));
+        escudo3.setPreserveRatio(true);
+        escudo3Button.setMaxWidth(Double.MAX_VALUE);
+
+        //Rosario
+        ImageView escudo4 = new ImageView(getClass().getResource("/main/resources/es/unex/cum/mdp/ef3/images/escudo4.png").toExternalForm());
+        escudo4Button.setGraphic(escudo4);
+        escudo4Button.setContentDisplay(ContentDisplay.TOP);
+        escudo4.fitWidthProperty().bind(escudo3Button.widthProperty().divide(1.6));
+        escudo4.setPreserveRatio(true);
+        escudo4Button.setMaxWidth(Double.MAX_VALUE);
+    }
+
     private void verificar() {
-        if (registrable[0] && registrable[1] && registrable[2]) {
+        if (registrable[0] && registrable[1] && registrable[2] && registrable[3]) {
             addEquipoButton.setDisable(false);
         }
         else{
@@ -69,15 +131,6 @@ public class AddEquipoController implements Initializable{
             ciudades.add(line);
         }
         reader.close();
-    }
-
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        try {
-            leerCiudades();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } 
     }
 
     @FXML
@@ -129,15 +182,40 @@ public class AddEquipoController implements Initializable{
     }
 
     @FXML
+    void seleccionarEscudo(ActionEvent event) {
+        if (grupo.getSelectedToggle().equals(escudo1Button)) {
+            escudo = "/main/resources/es/unex/cum/mdp/ef3/images/escudo1.png";
+        }
+        else if (grupo.getSelectedToggle().equals(escudo2Button)) {
+            escudo = "/main/resources/es/unex/cum/mdp/ef3/images/escudo2.png";
+        }
+        else if (grupo.getSelectedToggle().equals(escudo3Button)) {
+            escudo = "/main/resources/es/unex/cum/mdp/ef3/images/escudo3.png";
+        }
+        else if (grupo.getSelectedToggle().equals(escudo4Button)) {
+            escudo = "/main/resources/es/unex/cum/mdp/ef3/images/escudo4.png";
+        }
+        
+        if (grupo.getSelectedToggle() != null) {
+            registrable[3] = true;
+        } else {
+            registrable[3] = false;
+        }
+
+        verificar();
+    }
+
+    @FXML
     void addEquipo(ActionEvent event) {
         String nombre = nombreTextField.getText();
         String ciudad = ciudadTextField.getText();
         int id = Integer.parseInt(directivoComboBox.getSelectionModel().getSelectedItem().split(" ID: ")[1]);
 
-        if (mainController.getCampeonato().addEquipo(nombre, ciudad, id)) {
+        if (mainController.getCampeonato().addEquipo(nombre, ciudad, id, escudo)) {
             Node source = (Node) event.getSource();
             Stage stage = (Stage) source.getScene().getWindow();
             stage.close();
+            System.out.println(mainController.getCampeonato().getEquipos().toString());
         }
     }
 

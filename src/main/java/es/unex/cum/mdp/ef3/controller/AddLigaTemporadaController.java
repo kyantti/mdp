@@ -42,11 +42,15 @@ public class AddLigaTemporadaController {
     }
 
     @FXML
-    void verificarNombre(KeyEvent event) throws NoLigaException {
-        if (!nombreTextField.getText().isEmpty() && !nombreTextField.getText().isBlank() && mainController.getCampeonato().getTempLiga(temporadaComboBox.getSelectionModel().getSelectedItem(), nombreTextField.getText()) == null) {
+    void verificarNombre(KeyEvent event){
+        try {
+            if (!nombreTextField.getText().isEmpty() && !nombreTextField.getText().isBlank() && mainController.getCampeonato().getTempLiga(temporadaComboBox.getSelectionModel().getSelectedItem(), nombreTextField.getText()) == null) {
+                registrable[0] = true;
+            } else {
+                registrable[0] = false;
+            }
+        } catch (NoLigaException e) {
             registrable[0] = true;
-        } else {
-            registrable[0] = false;
         }
         verificar();
     }
