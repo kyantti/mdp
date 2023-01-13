@@ -101,7 +101,7 @@ public class AddJugadorEquipoLigaController {
     }
 
     @FXML
-    void mostrarJugadores(MouseEvent event) {
+    void mostrarJugadores(MouseEvent event) throws NoLigaException {
         int id = 0;
         String nombre = "";
 
@@ -109,9 +109,11 @@ public class AddJugadorEquipoLigaController {
         if (mainController.getCampeonato().getFederados() != null) {
             for (Map.Entry<Integer, Persona> set : mainController.getCampeonato().getFederados().entrySet()) {
                 if (set.getValue().getClass().equals(Jugador.class)) {
-                    nombre = set.getValue().getNombre();
-                    id = set.getValue().getId();
-                    jugadoresObservableList.add("Nombre: " + nombre + " ID: " + id);
+                    if (!((Jugador) set.getValue()).isEnEquipoLiga()) {
+                        nombre = set.getValue().getNombre();
+                        id = set.getValue().getId();
+                        jugadoresObservableList.add("Nombre: " + nombre + " ID: " + id);
+                    }
                 }
             }
         }

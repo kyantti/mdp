@@ -4,11 +4,13 @@ public class Jugador extends Persona implements Comparable <Jugador> {
 
     private String nick;
     private int coef;
+    private boolean enEquipoLiga;
 
     public Jugador(String nombre, int edad, int id, String nick, int coef, String aspecto) {
         super(nombre, edad, id, aspecto);
         this.nick = nick;
         this.coef = coef;
+        enEquipoLiga = false;
     }
 
     public Jugador(String nick){
@@ -88,12 +90,9 @@ public class Jugador extends Persona implements Comparable <Jugador> {
     }
 
     
-    /** 
-     * @return String
-     */
     @Override
     public String toString() {
-        return "Jugador [nick=" + nick + ", coef=" + coef + "]";
+        return "Jugador [nick=" + nick + ", coef=" + coef + ", enEquipoLiga=" + enEquipoLiga + "]";
     }
 
     
@@ -112,6 +111,14 @@ public class Jugador extends Persona implements Comparable <Jugador> {
             return -1;
         }
         return 0;
+    }
+
+    public boolean isEnEquipoLiga() {
+        return enEquipoLiga;
+    }
+
+    public void setEnEquipoLiga(boolean enEquipoLiga) {
+        this.enEquipoLiga = enEquipoLiga;
     }
     
 }

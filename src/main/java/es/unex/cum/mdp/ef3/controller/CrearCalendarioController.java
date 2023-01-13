@@ -78,14 +78,11 @@ public class CrearCalendarioController {
         String temporada = temporadaComboBox.getSelectionModel().getSelectedItem();
         String liga = ligaComboBox.getSelectionModel().getSelectedItem();
 
-        //if (mainController.getCampeonato().crearCalendario(temporada, liga, "Futbolin")) {
-            
-        //}
-
-        Node source = (Node) event.getSource();
-        Stage stage = (Stage) source.getScene().getWindow();
-        stage.close();
-        
+        if (mainController.getCampeonato().crearCalendario(temporada, liga, "Futbolin")) {
+            Node source = (Node) event.getSource();
+            Stage stage = (Stage) source.getScene().getWindow();
+            stage.close();
+        }        
     }
 
 }

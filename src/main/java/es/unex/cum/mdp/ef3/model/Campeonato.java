@@ -300,6 +300,7 @@ public class Campeonato implements Serializable{
                 EquipoLiga equipoLiga = getTempLiga(nomTemp, nomLiga).getEquipoLiga(nomEq);
                 if (equipoLiga!= null && !equipoLiga.getJugadores().contains(equipoLiga.getJugador(idJug))) {
                     equipoLiga.addJugadores(new Jugador(String.valueOf(idJug)));
+                    ((Jugador) getFederados().get(idJug)).setEnEquipoLiga(true);
                     return true;
                 }
                 return false;

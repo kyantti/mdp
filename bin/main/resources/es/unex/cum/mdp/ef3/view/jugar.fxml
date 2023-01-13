@@ -38,7 +38,7 @@
                   <Insets top="5.0" />
                </VBox.margin>
             </Text>
-            <ComboBox fx:id="ligaComboBox" onAction="#seleccionarLiga" onMouseEntered="#mostrarLigas" prefWidth="150.0">
+            <ComboBox fx:id="ligaComboBox" disable="true" onAction="#seleccionarLiga" onMouseEntered="#mostrarLigas" prefWidth="150.0">
                <VBox.margin>
                   <Insets top="5.0" />
                </VBox.margin>
@@ -48,7 +48,7 @@
                   <Insets top="5.0" />
                </VBox.margin>
             </Text>
-            <ComboBox fx:id="jornadaComboBox" onAction="#seleccionarJornada" onMouseEntered="#mostrarJornadas" prefWidth="150.0">
+            <ComboBox fx:id="jornadaComboBox" disable="true" onAction="#seleccionarJornada" onMouseEntered="#mostrarJornadas" prefWidth="150.0">
                <VBox.margin>
                   <Insets top="5.0" />
                </VBox.margin>
@@ -58,7 +58,7 @@
                   <Insets top="5.0" />
                </VBox.margin>
             </Text>
-            <ComboBox fx:id="partidoComboBox" onAction="#seleccionarPartido" onMouseEntered="#mostrarPartidos" prefWidth="150.0">
+            <ComboBox fx:id="partidoComboBox" disable="true" onAction="#seleccionarPartido" onMouseEntered="#mostrarPartidos" prefWidth="150.0">
                <VBox.margin>
                   <Insets top="5.0" />
                </VBox.margin>
@@ -68,7 +68,7 @@
                   <Insets top="5.0" />
                </VBox.margin>
             </Text>
-            <ComboBox fx:id="golLocalComboBox" onAction="#seleccionarGolesLocal" prefWidth="150.0">
+            <ComboBox fx:id="golLocalComboBox" disable="true" onAction="#seleccionarGolesLocal" prefWidth="150.0">
                <VBox.margin>
                   <Insets top="5.0" />
                </VBox.margin>
@@ -78,7 +78,7 @@
                   <Insets top="5.0" />
                </VBox.margin>
             </Text>
-            <ComboBox fx:id="golVisComboBox" onAction="#seleccionarGolesVis" prefWidth="150.0">
+            <ComboBox fx:id="golVisComboBox" disable="true" onAction="#seleccionarGolesVis" prefWidth="150.0">
                <VBox.margin>
                   <Insets top="5.0" />
                </VBox.margin>
