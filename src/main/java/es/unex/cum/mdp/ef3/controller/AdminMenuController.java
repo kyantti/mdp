@@ -147,8 +147,17 @@ public class AdminMenuController{
     }
 
     @FXML
-    void simular(ActionEvent event) {
-
+    void simular(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/main/resources/es/unex/cum/mdp/ef3/view/simular.fxml"));	
+		root = loader.load();
+        
+        SimularController simularController = loader.getController();
+		simularController.setMainController(mainController);
+		
+		stage = new Stage();
+		scene = new Scene(root);
+		stage.setScene(scene);
+		stage.show();
     }
 
     @FXML

@@ -124,6 +124,8 @@ public class RegisterController implements Initializable {
             mainController.getCampeonato().addUsuario(nombre, password, "admin");
         } else if (tipo.equals("Normal")) {
             mainController.getCampeonato().addUsuario(nombre, password, "normal");
+            System.out.println(mainController.getCampeonato().getUsuarios().toString());
+            
         }
 
         FXMLLoader loader = new FXMLLoader(

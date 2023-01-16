@@ -67,16 +67,13 @@ public class EquipoBuilder {
 	 * @return Equipo
 	 */
 	public Equipo build() {
-		return new Equipo(this.nombre, this.ciudad, this.id, this.escudo);
+		return new Equipo(this.nombre, this.ciudad, this.id, this.cargo, this.escudo);
 	}
 
 	
-	/** 
-	 * @return String
-	 */
-	@java.lang.Override
+	@Override
 	public String toString() {
-		return "Equipo.EquipoBuilder(nombre=" + this.nombre + ", ciudad=" + this.ciudad + ", cargo="
-				+ this.cargo + ")";
+		return "EquipoBuilder [nombre=" + nombre + ", ciudad=" + ciudad + ", id=" + id + ", cargo=" + cargo
+				+ ", escudo=" + escudo + "]";
 	}
 }

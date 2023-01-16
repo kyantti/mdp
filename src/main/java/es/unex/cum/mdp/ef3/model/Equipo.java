@@ -16,11 +16,12 @@ public class Equipo implements Serializable {
         cargo = new Directivo("");
     }
 
-    public Equipo(String nombre, String ciudad, int id, String escudo) {
+    public Equipo(String nombre, String ciudad, int id, Directivo cargo, String escudo) {
         this.nombre = nombre;
         this.ciudad = ciudad;
         this.id = id;
         this.escudo = escudo;
+        this.cargo = cargo;
     }
     
     public String getNombre() {

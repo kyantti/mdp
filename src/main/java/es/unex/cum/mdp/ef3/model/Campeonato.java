@@ -217,6 +217,7 @@ public class Campeonato implements Serializable{
     public boolean addEquipo(String nombre, String ciudad, int id, String escudo) {
         if (nombre != null && ciudad != null &&  !equipos.containsKey(nombre)){
             Persona directivo = federados.get(id);
+            System.out.println(directivo.getNombre());
             if (directivo != null && directivo.getClass().equals(Directivo.class)) {
                 equipos.put(nombre, new EquipoBuilder().withNombre(nombre).withCiudad(ciudad).withId(id).withCargo((Directivo) directivo).withEscudo(escudo).build());
                 return true;
@@ -299,7 +300,7 @@ public class Campeonato implements Serializable{
             try {
                 EquipoLiga equipoLiga = getTempLiga(nomTemp, nomLiga).getEquipoLiga(nomEq);
                 if (equipoLiga!= null && !equipoLiga.getJugadores().contains(equipoLiga.getJugador(idJug))) {
-                    equipoLiga.addJugadores(new Jugador(String.valueOf(idJug)));
+                    equipoLiga.addJugadores((Jugador) getFederados().get(idJug));
                     ((Jugador) getFederados().get(idJug)).setEnEquipoLiga(true);
                     return true;
                 }
@@ -372,8 +373,9 @@ public class Campeonato implements Serializable{
                 } catch (NoLigaException e) {
                     e.printStackTrace();
                 }
-                getTempLiga(nomTemp, nomLiga).getEquiposLiga().add(new EquipoLiga(coef, new EquipoBuilder().withNombre(nomEq).build()));
+                getTempLiga(nomTemp, nomLiga).getEquiposLiga().add(new EquipoLiga(coef, getEquipo(nomEq)));
                 getEquipo(nomEq).setEnLiga(true);
+                System.out.println(getEquipo(nomEq).toString());
                 return true;
             }
         } catch (NoLigaException e) {
@@ -487,7 +489,13 @@ public class Campeonato implements Serializable{
                 new FileWriter("src/main/resources/es/unex/cum/mdp/ef3/data/users.txt", true))) {
             writer.write(nombre + "#" + password + "#" + tipo);
             writer.newLine();
-            usuarios.add(new Usuario(nombre, password, tipo));
+            System.out.println(nombre);
+            System.out.println(password);
+            System.out.println(tipo);
+            if (usuarios.add(new Usuario(nombre, password, tipo))){
+                System.out.println(usuarios.toString());
+            }
+            
         } catch (IOException e) {
             e.printStackTrace();
         }

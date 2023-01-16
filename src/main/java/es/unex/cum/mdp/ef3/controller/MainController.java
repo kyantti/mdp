@@ -51,11 +51,15 @@ public class MainController implements Initializable {
 
     private void verificar() {
         usuario = campeonato.getUsuario(userTextField.getText());
+        //campeonato.getUsuarios().clear();
+        System.out.println(campeonato.getUsuarios().toString());
         if (usuario != null && usuario.getPassword().equals(passwordTexField.getText())) {
             iniciarSesionButton.setDisable(false);
         } else {
             iniciarSesionButton.setDisable(true);
         }
+
+        //System.out.println(campeonato.getUsuarios().toString());
     }
 
     @FXML
@@ -98,6 +102,23 @@ public class MainController implements Initializable {
             adminMenuController.setMainController(this);
 
             adminMenuController.getBienvenidoLabel().setText("Bienvenido " + usuario.getNombre());
+
+            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        }
+        else if (usuario.getTipo().equals("normal")) {
+            usuario.setLogueado(true);
+
+            FXMLLoader loader = new FXMLLoader(
+                    getClass().getResource("/main/resources/es/unex/cum/mdp/ef3/view/usuarioNormalMenu.fxml"));
+            root = loader.load();
+
+            NormalMenuController normalMenuController = loader.getController();
+            normalMenuController.setMainController(this);
+
+            normalMenuController.getBienvenidoLabel().setText("Bienvenido " + usuario.getNombre());
 
             stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             scene = new Scene(root);

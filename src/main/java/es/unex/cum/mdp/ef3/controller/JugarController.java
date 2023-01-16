@@ -1,8 +1,8 @@
 package main.java.es.unex.cum.mdp.ef3.controller;
 
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.net.URL;
+import java.util.Arrays;
 import java.util.Map;
 import java.util.ResourceBundle;
 
@@ -11,12 +11,14 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 import main.java.es.unex.cum.mdp.ef3.model.Jornada;
 import main.java.es.unex.cum.mdp.ef3.model.Liga;
 import main.java.es.unex.cum.mdp.ef3.model.NoLigaException;
@@ -24,6 +26,9 @@ import main.java.es.unex.cum.mdp.ef3.model.Partido;
 import main.java.es.unex.cum.mdp.ef3.model.Temporada;
 
 public class JugarController implements Initializable {
+
+    private int [] golLocal = new int[3];
+    private int [] golVis = new int [3];
 
     private boolean[] jugable = new boolean[6];
 
@@ -39,10 +44,22 @@ public class JugarController implements Initializable {
     private ImageView escudoVisitante;
 
     @FXML
-    private ComboBox<Integer> golLocalComboBox;
+    private ComboBox<Integer> enf1LocalCmbBox;
 
     @FXML
-    private ComboBox<Integer> golVisComboBox;
+    private ComboBox<Integer> enf1VisCmbBox;
+
+    @FXML
+    private ComboBox<Integer> enf2LocalCmbBox;
+
+    @FXML
+    private ComboBox<Integer> enf2VisCmbBox;
+
+    @FXML
+    private ComboBox<Integer> enf3LocalCmbBox;
+
+    @FXML
+    private ComboBox<Integer> enf3VisCmbBox;
 
     @FXML
     private Button jugarButton;
@@ -52,6 +69,8 @@ public class JugarController implements Initializable {
 
     @FXML
     private Text localText;
+    @FXML
+    private Text localText2;
 
     @FXML
     private ComboBox<Integer> partidoComboBox;
@@ -68,6 +87,9 @@ public class JugarController implements Initializable {
     @FXML
     private Text visitanteText;
 
+    @FXML
+    private Text visitanteText2;
+
     public void setMainController(MainController mainController) {
         this.mainController = mainController;
     }
@@ -75,8 +97,13 @@ public class JugarController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         for (int i = 0; i < 31; i++) {
-            golLocalComboBox.getItems().add(i);
-            golVisComboBox.getItems().add(i);
+            enf1LocalCmbBox.getItems().add(i);
+            enf2LocalCmbBox.getItems().add(i);
+            enf3LocalCmbBox.getItems().add(i);
+            enf1VisCmbBox.getItems().add(i);
+            enf2VisCmbBox.getItems().add(i);
+            enf3VisCmbBox.getItems().add(i);
+
         }
         puntLocal.setText("X");
         puntVis.setText("X");
@@ -151,23 +178,57 @@ public class JugarController implements Initializable {
         localText.setText(partido.getLocal().getE().getNombre());
         visitanteText.setText(partido.getVisitante().getE().getNombre());
 
-        escudoLocal.setImage(new Image(new FileInputStream(partido.getLocal().getE().getEscudo())));
-        escudoVisitante.setImage(new Image(new FileInputStream(partido.getVisitante().getE().getEscudo())));
+        Image escudoLocalImage = new Image(partido.getLocal().getE().getEscudo());
+        escudoLocal.setImage(escudoLocalImage);
+        
+        Image escudoVisitanteImage = new Image(partido.getVisitante().getE().getEscudo());
+        escudoVisitante.setImage(escudoVisitanteImage);
 
-        golLocalComboBox.setDisable(false);
+        localText2.setText(partido.getLocal().getE().getNombre());
+        visitanteText2.setText(partido.getVisitante().getE().getNombre());
 
+        enf1LocalCmbBox.setDisable(false);
     }
 
     @FXML
-    void seleccionarGolesLocal(ActionEvent event) {
-        golVisComboBox.setDisable(false);
+    void seleccionarGoles1enfLocal(ActionEvent event) {
+        golLocal[0] = enf1LocalCmbBox.getSelectionModel().getSelectedItem();
+        enf2LocalCmbBox.setDisable(false);
     }
 
     @FXML
-    void seleccionarGolesVis(ActionEvent event) {
+    void seleccionarGoles2enfLocal(ActionEvent event) {
+        golLocal[1] = enf2LocalCmbBox.getSelectionModel().getSelectedItem();
+        enf3LocalCmbBox.setDisable(false);
+    }
+
+    @FXML
+    void seleccionarGoles3enfLocal(ActionEvent event) {
+        golLocal[2] = enf3LocalCmbBox.getSelectionModel().getSelectedItem();
+        puntLocal.setText(String.valueOf(Arrays.stream(golLocal).sum()));
+        enf1VisCmbBox.setDisable(false);
+    }
+
+    @FXML
+    void seleccionarGoles1enfVis(ActionEvent event) {
+        golVis[0] = enf1VisCmbBox.getSelectionModel().getSelectedItem();
+        enf2VisCmbBox.setDisable(false);
+    }
+
+    
+    @FXML
+    void seleccionarGoles2enfVis(ActionEvent event) {
+        golVis[1] = enf2VisCmbBox.getSelectionModel().getSelectedItem();
+        enf3VisCmbBox.setDisable(false);
+    }
+
+
+    @FXML
+    void seleccionarGoles3enfVis(ActionEvent event) {
+        golVis[2] = enf3VisCmbBox.getSelectionModel().getSelectedItem();
+        puntVis.setText(String.valueOf(Arrays.stream(golVis).sum()));
         jugarButton.setDisable(false);
     }
-
 
     @FXML
     void jugar(ActionEvent event) {
@@ -175,11 +236,11 @@ public class JugarController implements Initializable {
         String nomLiga = ligaComboBox.getSelectionModel().getSelectedItem();
         int numJornada = jornadaComboBox.getSelectionModel().getSelectedItem();
         int idPartido = partidoComboBox.getSelectionModel().getSelectedItem();
-        int golLocal = golLocalComboBox.getSelectionModel().getSelectedItem();
-        int golVis = golVisComboBox.getSelectionModel().getSelectedItem();
-
+        
         if (mainController.getCampeonato().jugar(nomTemp, nomLiga, numJornada, idPartido, golLocal, golVis)) {
-            
+            Node source = (Node) event.getSource();
+            Stage stage = (Stage) source.getScene().getWindow();
+            stage.close();
         }
     }
 }

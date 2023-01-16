@@ -1,8 +1,2 @@
 pablo#admin1234#admin
-joseluis#soymaricon#admin
-admin#admin1234#admin
-admin1#admin1234#admin
-silvana#silvana1234#normal
-pablo01#1234#normal
-pablo0#1234#admin
-pedro#1234#normal
+pablo2#admin1234#normal

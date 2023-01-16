@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="633.0" prefWidth="828.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.es.unex.cum.mdp.ef3.controller.ConsultarFederadosController">
+   <children>
+      <TableView fx:id="table" layoutX="18.0" layoutY="103.0" prefHeight="514.0" prefWidth="790.0">
+         <columns>
+            <TableColumn fx:id="nombreCol" prefWidth="116.79998779296875" text="Nombre" />
+            <TableColumn fx:id="edadCol" prefWidth="94.4000244140625" text="Edad" />
+            <TableColumn fx:id="idCol" prefWidth="52.79998779296875" text="ID" />
+            <TableColumn fx:id="aspectoCol" prefWidth="104.800048828125" text="Aspecto" />
+            <TableColumn fx:id="nickCol" prefWidth="83.199951171875" text="Nick" />
+            <TableColumn fx:id="coefCol" prefWidth="116.0" text="Coeficiente" />
+            <TableColumn fx:id="enLigaCol" prefWidth="75.0" text="En liga" />
+            <TableColumn fx:id="antiguedadCol" prefWidth="75.0" text="Antiguedad" />
+            <TableColumn fx:id="puestoCol" prefWidth="75.0" text="Puesto" />
+         </columns>
+      </TableView>
+      <ImageView fitHeight="71.0" fitWidth="187.0" layoutX="18.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/rfef2.png" />
+         </image>
+      </ImageView>
+      <ComboBox fx:id="tipoComboBox" layoutX="657.0" layoutY="39.0" onAction="#seleccionarTipo" prefWidth="150.0" />
+      <Text layoutX="657.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tipo" wrappingWidth="38.479248046875" />
+   </children>
+</AnchorPane>

@@ -23,8 +23,8 @@ public class App extends Application {
             // Platform.exit();
             // });
             primaryStage.show();
-        }
-        catch (Exception e) {
+            }
+            catch (Exception e) {
             e.printStackTrace();
         }
     }

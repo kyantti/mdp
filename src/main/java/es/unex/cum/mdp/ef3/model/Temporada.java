@@ -103,5 +103,13 @@ public class Temporada implements Serializable {
         return "Temporada [nombre=" + nombre + ", ligas=" + ligas + "]";
     }
 
+    public String getNombresLigas(){
+        String nombresLigas = "";
+        for (Map.Entry<String, Liga> set : ligas.entrySet()){
+            nombresLigas = nombresLigas + set.getValue().getNombre() + ", ";
+        }
+        return nombresLigas; 
+    }
+
     
 }

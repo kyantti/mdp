@@ -21,7 +21,7 @@
             <Image url="@../images/rfef2.png" />
          </image>
       </ImageView>
-      <VBox layoutX="404.0" layoutY="28.0" prefHeight="300.0" prefWidth="100.0">
+      <VBox layoutX="346.0" layoutY="74.0" prefHeight="230.0" prefWidth="97.0">
          <children>
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Temporada">
                <VBox.margin>
@@ -63,38 +63,13 @@
                   <Insets top="5.0" />
                </VBox.margin>
             </ComboBox>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Goles local">
-               <VBox.margin>
-                  <Insets top="5.0" />
-               </VBox.margin>
-            </Text>
-            <ComboBox fx:id="golLocalComboBox" disable="true" onAction="#seleccionarGolesLocal" prefWidth="150.0">
-               <VBox.margin>
-                  <Insets top="5.0" />
-               </VBox.margin>
-            </ComboBox>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Goles visitante">
-               <VBox.margin>
-                  <Insets top="5.0" />
-               </VBox.margin>
-            </Text>
-            <ComboBox fx:id="golVisComboBox" disable="true" onAction="#seleccionarGolesVis" prefWidth="150.0">
-               <VBox.margin>
-                  <Insets top="5.0" />
-               </VBox.margin>
-            </ComboBox>
-            <Button fx:id="jugarButton" disable="true" mnemonicParsing="false" onAction="#jugar" prefHeight="26.0" prefWidth="110.0" text="Jugar">
-               <VBox.margin>
-                  <Insets top="10.0" />
-               </VBox.margin>
-            </Button>
          </children>
       </VBox>
-      <GridPane layoutX="89.0" layoutY="135.0" prefHeight="137.0" prefWidth="242.0">
+      <GridPane layoutX="45.0" layoutY="135.0" prefHeight="138.0" prefWidth="286.0">
         <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="128.79996337890626" minWidth="10.0" prefWidth="124.79996337890626" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="76.20001220703125" minWidth="10.0" prefWidth="43.000036621093756" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="117.0" minWidth="10.0" prefWidth="117.0" />
         </columnConstraints>
         <rowConstraints>
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -102,7 +77,7 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Text fx:id="localText" strokeType="OUTSIDE" strokeWidth="0.0" text="Local" wrappingWidth="78.93670654296875">
+            <Text fx:id="localText" strokeType="OUTSIDE" strokeWidth="0.0" text="Local" textAlignment="CENTER" wrappingWidth="126.13671875">
                <font>
                   <Font name="System Bold Italic" size="17.0" />
                </font></Text>
@@ -111,18 +86,18 @@
                   <Insets left="10.0" />
                </GridPane.margin>
             </Text>
-            <Text fx:id="visitanteText" strokeType="OUTSIDE" strokeWidth="0.0" text="Visitante" wrappingWidth="81.875732421875" GridPane.columnIndex="2">
+            <Text fx:id="visitanteText" strokeType="OUTSIDE" strokeWidth="0.0" text="Visitante" textAlignment="CENTER" wrappingWidth="117.875732421875" GridPane.columnIndex="2">
                <font>
                   <Font name="System Bold Italic" size="17.0" />
                </font></Text>
-            <ImageView fx:id="escudoLocal" fitHeight="40.0" fitWidth="79.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="1" />
-            <ImageView fx:id="escudoVisitante" fitHeight="40.0" fitWidth="79.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-            <Text fx:id="puntLocal" strokeType="OUTSIDE" strokeWidth="0.0" text="5" wrappingWidth="80.5367431640625" GridPane.rowIndex="2">
+            <ImageView fx:id="escudoLocal" fitHeight="36.0" fitWidth="124.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="1" />
+            <ImageView fx:id="escudoVisitante" fitHeight="40.0" fitWidth="117.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+            <Text fx:id="puntLocal" strokeType="OUTSIDE" strokeWidth="0.0" text="5" textAlignment="CENTER" wrappingWidth="80.5367431640625" GridPane.rowIndex="2">
                <font>
                   <Font name="Agency FB" size="35.0" />
                </font>
             </Text>
-            <Text fx:id="puntVis" strokeType="OUTSIDE" strokeWidth="0.0" text="2" wrappingWidth="79.73675346374512" GridPane.columnIndex="2" GridPane.rowIndex="2">
+            <Text fx:id="puntVis" strokeType="OUTSIDE" strokeWidth="0.0" text="2" textAlignment="CENTER" wrappingWidth="79.73675346374512" GridPane.columnIndex="2" GridPane.rowIndex="2">
                <font>
                   <Font name="Agency FB" size="35.0" />
                </font>
@@ -135,5 +110,86 @@
             <Image url="@../images/campo3.png" />
          </image>
       </ImageView>
+      <VBox layoutX="468.0" layoutY="28.0" prefHeight="269.0" prefWidth="100.0">
+         <children>
+            <Text fx:id="localText2" strokeType="OUTSIDE" strokeWidth="0.0" text="Local" wrappingWidth="97.897705078125">
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Text>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="1º  enfrentamiento">
+               <VBox.margin>
+                  <Insets top="5.0" />
+               </VBox.margin>
+            </Text>
+            <ComboBox fx:id="enf1LocalCmbBox" disable="true" onAction="#seleccionarGoles1enfLocal" prefWidth="150.0">
+               <VBox.margin>
+                  <Insets top="5.0" />
+               </VBox.margin>
+            </ComboBox>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="2º enfrentamiento">
+               <VBox.margin>
+                  <Insets top="5.0" />
+               </VBox.margin>
+            </Text>
+            <ComboBox fx:id="enf2LocalCmbBox" disable="true" onAction="#seleccionarGoles2enfLocal" prefWidth="150.0">
+               <VBox.margin>
+                  <Insets top="5.0" />
+               </VBox.margin>
+            </ComboBox>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="3º enfrentamiento">
+               <VBox.margin>
+                  <Insets top="5.0" />
+               </VBox.margin>
+            </Text>
+            <ComboBox fx:id="enf3LocalCmbBox" disable="true" onAction="#seleccionarGoles3enfLocal" prefWidth="150.0">
+               <VBox.margin>
+                  <Insets top="5.0" />
+               </VBox.margin>
+            </ComboBox>
+            <Text fx:id="visitanteText2" strokeType="OUTSIDE" strokeWidth="0.0" text="Visitante" wrappingWidth="96.8524169921875">
+               <VBox.margin>
+                  <Insets top="5.0" />
+               </VBox.margin>
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Text>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="1º enfrentamiento">
+               <VBox.margin>
+                  <Insets top="5.0" />
+               </VBox.margin>
+            </Text>
+            <ComboBox fx:id="enf1VisCmbBox" disable="true" onAction="#seleccionarGoles1enfVis" prefWidth="150.0">
+               <VBox.margin>
+                  <Insets top="5.0" />
+               </VBox.margin>
+            </ComboBox>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="2º enfrentamiento">
+               <VBox.margin>
+                  <Insets top="5.0" />
+               </VBox.margin>
+            </Text>
+            <ComboBox fx:id="enf2VisCmbBox" disable="true" onAction="#seleccionarGoles2enfVis" prefWidth="150.0">
+               <VBox.margin>
+                  <Insets top="5.0" />
+               </VBox.margin>
+            </ComboBox>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="3º enfrentamiento">
+               <VBox.margin>
+                  <Insets top="5.0" />
+               </VBox.margin>
+            </Text>
+            <ComboBox fx:id="enf3VisCmbBox" disable="true" onAction="#seleccionarGoles3enfVis" prefWidth="150.0">
+               <VBox.margin>
+                  <Insets top="5.0" />
+               </VBox.margin>
+            </ComboBox>
+         </children>
+      </VBox>
+      <Button fx:id="jugarButton" disable="true" layoutX="132.0" layoutY="349.0" mnemonicParsing="false" onAction="#jugar" prefHeight="26.0" prefWidth="110.0" text="Jugar" />
    </children>
 </AnchorPane>
