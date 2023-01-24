@@ -15,6 +15,7 @@ public class MainCalculadora extends Application {
             Scene scene = new Scene(root, 400, 400);
             scene.getStylesheets().add(getClass().getResource("/main/resources/es/unex/cum/mdp/sesion10/view/ej7Estilos.css").toExternalForm());
             primaryStage.setScene(scene);
+            primaryStage.setResizable(false);
             primaryStage.show();
         } catch (Exception e) {
             e.printStackTrace();

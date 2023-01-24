@@ -18,6 +18,7 @@ public class App extends Application {
             BorderPane root = (BorderPane) FXMLLoader.load(getClass().getResource("/main/resources/es/unex/cum/mdp/sesion11/view/Main.fxml"), resourceBundle);
             Scene scene = new Scene(root, 400, 400);
             primaryStage.setScene(scene);
+            primaryStage.setResizable(false);
             primaryStage.show();
         } catch (Exception e) {
             e.printStackTrace();

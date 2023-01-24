@@ -8,6 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Polygon?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.es.unex.cum.mdp.ef3.controller.NormalMenuController">
    <children>
@@ -46,6 +47,9 @@
             </Button>
          </children>
       </VBox>
-      <Label fx:id="bienvenidoLabel" layoutX="358.0" layoutY="67.0" prefHeight="18.0" prefWidth="166.0" text="BIenvenido:" />
+      <Label fx:id="bienvenidoLabel" layoutX="358.0" layoutY="67.0" prefHeight="18.0" prefWidth="166.0" text="BIenvenido:">
+         <font>
+            <Font name="System Bold Italic" size="16.0" />
+         </font></Label>
    </children>
 </AnchorPane>

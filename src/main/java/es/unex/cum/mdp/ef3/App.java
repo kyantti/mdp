@@ -17,6 +17,7 @@ public class App extends Application {
             MainController controller = (MainController) loader.getController();
             Scene scene = new Scene(root);
             primaryStage.setScene(scene);
+            primaryStage.setResizable(false);
             // Cuando se cierre se llama al método shutdown de controller
             // primaryStage.setOnHidden(e -> { //Capturar al pulsar Exit
             // controller.shutdown();

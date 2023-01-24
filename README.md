@@ -1,18 +1,19 @@
-## Getting Started
+Para ejecutar la tercera entrega final dirigirse a src\main\java\es\unex\cum\mdp\ef3\App.java y ejecutar.
+Acceder con usuario administrador o crear uno (para ello consultar los codigos de invitación en src\main\resources\es\unex\cum\mdp\ef3\data\claves.txt)
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+Usario ya registrado:
+    User: pablo
+    Pass: admin1234
 
-## Folder Structure
+Una vez en la GUI simular una liga, cuando la barra de progreso se complete habra terminado la simulación.
 
-The workspace contains two folders by default, where:
+Guardar
 
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
+Para ver las clasificaciones y otros datos se debe salir de la interfaz de administrador y volver a acceder con un usario normal.
 
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
+Usario ya registrado:
+    User: pablo2
+    Pass: admin1234
 
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
 
-## Dependency Management
 
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).

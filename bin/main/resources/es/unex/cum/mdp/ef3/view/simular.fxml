@@ -3,6 +3,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.ProgressBar?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -79,12 +80,12 @@
             </Text>
             <ImageView fx:id="escudoLocal" fitHeight="36.0" fitWidth="124.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="1" />
             <ImageView fx:id="escudoVisitante" fitHeight="40.0" fitWidth="117.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-            <Text fx:id="puntLocal" strokeType="OUTSIDE" strokeWidth="0.0" text="5" textAlignment="CENTER" wrappingWidth="80.5367431640625" GridPane.rowIndex="2">
+            <Text fx:id="puntLocal" strokeType="OUTSIDE" strokeWidth="0.0" text="X" textAlignment="CENTER" wrappingWidth="80.5367431640625" GridPane.rowIndex="2">
                <font>
                   <Font name="Agency FB" size="35.0" />
                </font>
             </Text>
-            <Text fx:id="puntVis" strokeType="OUTSIDE" strokeWidth="0.0" text="2" textAlignment="CENTER" wrappingWidth="79.73675346374512" GridPane.columnIndex="2" GridPane.rowIndex="2">
+            <Text fx:id="puntVis" strokeType="OUTSIDE" strokeWidth="0.0" text="X" textAlignment="CENTER" wrappingWidth="79.73675346374512" GridPane.columnIndex="2" GridPane.rowIndex="2">
                <font>
                   <Font name="Agency FB" size="35.0" />
                </font>
@@ -97,5 +98,6 @@
             <Image url="@../images/campo3.png" />
          </image>
       </ImageView>
+      <ProgressBar fx:id="barraProgreso" layoutX="43.0" layoutY="304.0" prefHeight="18.0" prefWidth="286.0" progress="0.0" />
    </children>
 </AnchorPane>

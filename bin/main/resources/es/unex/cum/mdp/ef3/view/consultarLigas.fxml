@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="972.0" prefWidth="1166.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.es.unex.cum.mdp.ef3.controller.ConsultarLigasController">
+   <children>
+      <TableView fx:id="table" layoutX="57.0" layoutY="116.0" prefHeight="846.0" prefWidth="1059.0">
+         <columns>
+            <TableColumn fx:id="nombreLigaCol" prefWidth="116.79998779296875" text="Nombre" />
+            <TableColumn prefWidth="562.3999862670898" text="Calendario">
+               <columns>
+                  <TableColumn fx:id="fechaJornadaCol" prefWidth="131.1999969482422" text="Fecha" />
+                  <TableColumn fx:id="numeroJornadaCol" prefWidth="70.39996337890625" text="Numero" />
+                  <TableColumn fx:id="partidosJugadosCol11" prefWidth="304.8000183105469" text="Partidos">
+                     <columns>
+                        <TableColumn fx:id="idPartidoCol" prefWidth="38.4000244140625" text="ID" />
+                        <TableColumn fx:id="nombreEqLocalCol" prefWidth="200.0" text="Local" />
+                        <TableColumn fx:id="nombreEqVisCol" minWidth="8.7999267578125" prefWidth="200.0" text="Visitante" />
+                        <TableColumn fx:id="juezCol" prefWidth="300.0" text="Juez" />
+                     </columns>
+                  </TableColumn>
+               </columns>
+            </TableColumn>
+         </columns>
+      </TableView>
+      <ImageView fitHeight="71.0" fitWidth="187.0" layoutX="14.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/rfef2.png" />
+         </image>
+      </ImageView>
+      <ComboBox fx:id="tempComboBox" layoutX="965.0" layoutY="61.0" onAction="#seleccionarTemp" onMouseEntered="#mostrarTemporadas" prefWidth="150.0" />
+      <Text layoutX="844.0" layoutY="79.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Temporada">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Text>
+   </children>
+</AnchorPane>

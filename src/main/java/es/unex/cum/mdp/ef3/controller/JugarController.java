@@ -111,12 +111,14 @@ public class JugarController implements Initializable {
 
     @FXML
     void mostrarTemporadas(MouseEvent event) {
-        ObservableList<String> temporadasObservableList = FXCollections.observableArrayList();
-        if (!mainController.getCampeonato().getTemporadas().isEmpty()) {
-            for (Temporada temporada : mainController.getCampeonato().getTemporadas()) {
-                temporadasObservableList.add(temporada.getNombre());
+        if (tempComboBox.getSelectionModel().isEmpty()) {
+            ObservableList<String> temporadasObservableList = FXCollections.observableArrayList();
+            if (!mainController.getCampeonato().getTemporadas().isEmpty()) {
+                for (Temporada temporada : mainController.getCampeonato().getTemporadas()) {
+                    temporadasObservableList.add(temporada.getNombre());
+                }
+                tempComboBox.setItems(temporadasObservableList);
             }
-            tempComboBox.setItems(temporadasObservableList);
         }
     }
 
@@ -127,14 +129,17 @@ public class JugarController implements Initializable {
 
     @FXML
     void mostrarLigas(MouseEvent event) {
-        ObservableList<String> ligasObservableList = FXCollections.observableArrayList();
-        Temporada temporada = mainController.getCampeonato().getTemporada(tempComboBox.getSelectionModel().getSelectedItem());
-        if (temporada != null) {
-            for (Map.Entry<String, Liga> set : temporada.getLigas().entrySet()) {
-                ligasObservableList.add(set.getValue().getNombre());
+        if (ligaComboBox.getSelectionModel().isEmpty()) {
+            ObservableList<String> ligasObservableList = FXCollections.observableArrayList();
+            Temporada temporada = mainController.getCampeonato()
+                    .getTemporada(tempComboBox.getSelectionModel().getSelectedItem());
+            if (temporada != null) {
+                for (Map.Entry<String, Liga> set : temporada.getLigas().entrySet()) {
+                    ligasObservableList.add(set.getValue().getNombre());
+                }
             }
+            ligaComboBox.setItems(ligasObservableList);
         }
-        ligaComboBox.setItems(ligasObservableList);
     }
 
     @FXML
@@ -144,7 +149,8 @@ public class JugarController implements Initializable {
 
     @FXML
     void mostrarJornadas(MouseEvent event) throws NoLigaException {
-        ObservableList<Integer> jornadasObservableList = FXCollections.observableArrayList();
+        if (jornadaComboBox.getSelectionModel().isEmpty()) {
+            ObservableList<Integer> jornadasObservableList = FXCollections.observableArrayList();
         Liga liga = mainController.getCampeonato().getTempLiga(tempComboBox.getSelectionModel().getSelectedItem(), ligaComboBox.getSelectionModel().getSelectedItem());
         if (liga != null) {
             for (Jornada jornada : liga.getCalendario()) {
@@ -153,6 +159,7 @@ public class JugarController implements Initializable {
             }
         }
         jornadaComboBox.setItems(jornadasObservableList);
+        }
     }
 
     @FXML
@@ -162,7 +169,8 @@ public class JugarController implements Initializable {
 
     @FXML
     void mostrarPartidos(MouseEvent event) throws NoLigaException {
-        ObservableList<Integer> partidosObservableList = FXCollections.observableArrayList();
+        if (partidoComboBox.getSelectionModel().isEmpty()) {
+            ObservableList<Integer> partidosObservableList = FXCollections.observableArrayList();
         Jornada jornada = mainController.getCampeonato().getTempLiga(tempComboBox.getSelectionModel().getSelectedItem(), ligaComboBox.getSelectionModel().getSelectedItem()).getJornada(jornadaComboBox.getSelectionModel().getSelectedItem());
         if (jornada != null) {
             for (Partido partido : jornada.getPartidos()) {
@@ -170,6 +178,7 @@ public class JugarController implements Initializable {
             }
         }
         partidoComboBox.setItems(partidosObservableList);
+        }
     }
 
     @FXML

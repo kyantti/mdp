@@ -84,6 +84,7 @@ public class MainController implements Initializable {
 		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		scene = new Scene(root);
 		stage.setScene(scene);
+stage.setResizable(false);
 		stage.show();
 
     }
@@ -106,6 +107,7 @@ public class MainController implements Initializable {
             stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             scene = new Scene(root);
             stage.setScene(scene);
+stage.setResizable(false);
             stage.show();
         }
         else if (usuario.getTipo().equals("normal")) {
@@ -123,6 +125,7 @@ public class MainController implements Initializable {
             stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             scene = new Scene(root);
             stage.setScene(scene);
+stage.setResizable(false);
             stage.show();
         }
         /*
@@ -138,6 +141,7 @@ public class MainController implements Initializable {
          * stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
          * scene = new Scene(root);
          * stage.setScene(scene);
+stage.setResizable(false);
          * stage.show();
          * }
          */

@@ -17,6 +17,7 @@ import javafx.stage.Stage;
 import javafx.util.Callback;
 import main.java.es.unex.cum.mdp.ef3.model.Directivo;
 import main.java.es.unex.cum.mdp.ef3.model.Equipo;
+import main.java.es.unex.cum.mdp.ef3.model.EquipoLiga;
 import main.java.es.unex.cum.mdp.ef3.model.Juez;
 import main.java.es.unex.cum.mdp.ef3.model.Jugador;
 import main.java.es.unex.cum.mdp.ef3.model.Persona;
@@ -59,14 +60,25 @@ public class NormalMenuController {
 		stage = new Stage();
 		scene = new Scene(root);
 		stage.setScene(scene);
+stage.setResizable(false);
 		stage.show();
 
         
     }
 
     @FXML
-    void consultarEstadisticas(ActionEvent event) {
-
+    void consultarEstadisticas(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/main/resources/es/unex/cum/mdp/ef3/view/consultarEstadistica.fxml"));	
+		root = loader.load();
+        
+        ConsultarEstadisticaController consultarEstadisticaController = loader.getController();
+		consultarEstadisticaController.setMainController(mainController);
+		
+		stage = new Stage();
+		scene = new Scene(root);
+		stage.setScene(scene);
+stage.setResizable(false);
+		stage.show();
     }
 
     @FXML
@@ -95,12 +107,23 @@ public class NormalMenuController {
 		stage = new Stage();
 		scene = new Scene(root);
 		stage.setScene(scene);
+stage.setResizable(false);
 		stage.show();
     }
 
     @FXML
-    void consultarLigas(ActionEvent event) {
-
+    void consultarLigas(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/main/resources/es/unex/cum/mdp/ef3/view/consultarLigas.fxml"));	
+		root = loader.load();
+        
+        ConsultarLigasController consultarLigasController = loader.getController();
+		consultarLigasController.setMainController(mainController);
+		
+		stage = new Stage();
+		scene = new Scene(root);
+		stage.setScene(scene);
+stage.setResizable(false);
+		stage.show();
     }
 
     @FXML
@@ -119,6 +142,7 @@ public class NormalMenuController {
 		stage = new Stage();
 		scene = new Scene(root);
 		stage.setScene(scene);
+stage.setResizable(false);
 		stage.show();
     }
 
@@ -130,6 +154,7 @@ public class NormalMenuController {
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
+stage.setResizable(false);
         stage.show();
     }
 }

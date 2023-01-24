@@ -53,15 +53,16 @@ public class CrearCalendarioController {
 
     @FXML
     void mostrarLigas(MouseEvent event) {
-        ObservableList<String> ligasObservableList = FXCollections.observableArrayList();
-        Temporada temporada = mainController.getCampeonato()
-                .getTemporada(temporadaComboBox.getSelectionModel().getSelectedItem());
-        if (temporada != null) {
-            for (Map.Entry<String, Liga> set : temporada.getLigas().entrySet()) {
-                ligasObservableList.add(set.getValue().getNombre());
+        if (ligaComboBox.getSelectionModel().isEmpty()) {
+            ObservableList<String> ligasObservableList = FXCollections.observableArrayList();
+            Temporada temporada = mainController.getCampeonato().getTemporada(temporadaComboBox.getSelectionModel().getSelectedItem());
+            if (temporada != null) {
+                for (Map.Entry<String, Liga> set : temporada.getLigas().entrySet()) {
+                    ligasObservableList.add(set.getValue().getNombre());
+                }
             }
+            ligaComboBox.setItems(ligasObservableList);
         }
-        ligaComboBox.setItems(ligasObservableList);
     }
 
     @FXML
